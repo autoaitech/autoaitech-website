@@ -2,12 +2,42 @@ import Link from "next/link";
 import AnimateIn from "@/components/AnimateIn";
 
 const systems = [
-  { name: "AI Lead Engine", tag: "Lead generation", description: "Continuously identifies, qualifies, and delivers high-intent leads — without lifting a finger." },
-  { name: "Retention Reactor AI", tag: "Client retention", description: "Detects at-risk clients before they leave and automatically re-engages dormant relationships." },
-  { name: "Smart Onboarding Engine", tag: "Onboarding", description: "Automates every step of client onboarding — from contract to delivery — so nothing slips." },
-  { name: "ROI Intelligence Hub", tag: "ROI visibility", description: "Surfaces real ROI data across every system so you always know what's working and what isn't." },
-  { name: "Creative Intelligence Engine", tag: "Creative ops", description: "Automates creative production and testing, so your best ads keep running and evolving." },
-  { name: "Campaign Monitoring Agents", tag: "Campaign intelligence", description: "Watches your campaigns 24/7 and flags underperformance before it costs you money." },
+  {
+    name: "AI Lead Engine",
+    tag: "Lead generation",
+    description: "Continuously identifies, qualifies, and delivers high-intent leads — without lifting a finger.",
+    outcome: "3–5× more qualified pipeline in 60 days",
+  },
+  {
+    name: "Retention Reactor AI",
+    tag: "Client retention",
+    description: "Detects at-risk clients before they leave and automatically re-engages dormant relationships.",
+    outcome: "Catch churn signals weeks before clients go cold",
+  },
+  {
+    name: "Smart Onboarding Engine",
+    tag: "Onboarding",
+    description: "Automates every step of client onboarding — from contract to delivery — so nothing slips.",
+    outcome: "Zero missed steps. Faster time-to-value.",
+  },
+  {
+    name: "ROI Intelligence Hub",
+    tag: "ROI visibility",
+    description: "Surfaces real ROI data across every system so you always know what's working and what isn't.",
+    outcome: "Live ROI per system, per week — automatically",
+  },
+  {
+    name: "Creative Intelligence Engine",
+    tag: "Creative ops",
+    description: "Automates creative production and testing, so your best ads keep running and evolving.",
+    outcome: "Lower CPAs. Higher ROAS. Week over week.",
+  },
+  {
+    name: "Campaign Monitoring Agents",
+    tag: "Campaign intelligence",
+    description: "Watches your campaigns 24/7 and flags underperformance before it costs you money.",
+    outcome: "Catch campaign issues hours before they're expensive",
+  },
 ];
 
 const systemIcons = [
@@ -62,13 +92,6 @@ const stepIcons = [
     <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
     <polyline points="16 7 22 7 22 13"/>
   </svg>,
-];
-
-const whyUs = [
-  { title: "Always on", description: "Your AI systems run 24 hours a day, 7 days a week. No holidays. No sick days. No Monday morning catch-up." },
-  { title: "Measurable ROI", description: "Every system we build has ROI baked in. You see exactly what it's generating — in your dashboard, every day." },
-  { title: "Built to scale", description: "Infrastructure that works for one client works for a hundred. We build once, correctly, with compound potential." },
-  { title: "Not one-off automations", description: "We don't build Zapier chains. We build interconnected systems that learn, adapt, and drive your growth loop." },
 ];
 
 const stats = [
@@ -204,6 +227,91 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── SYSTEMS OVERVIEW ── */}
+      <section className="bg-white py-24 px-6">
+        <div className="max-w-6xl mx-auto">
+          <AnimateIn className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#0a0a0a] tracking-tight mb-4">Six systems. One infrastructure.</h2>
+            <p className="text-[#6b7280] text-lg max-w-xl mx-auto">Each system runs continuously, generates measurable output, and connects to the others.</p>
+          </AnimateIn>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {systems.map((system, i) => (
+              <AnimateIn key={system.name} delay={i * 80} direction="up">
+                <div className="bg-[#0c0c14] rounded-xl p-7 system-card h-full cursor-default flex flex-col">
+                  <div
+                    className="w-[42px] h-[42px] rounded-[10px] flex items-center justify-center mb-5 flex-shrink-0"
+                    style={{ background: "linear-gradient(135deg, rgba(59,130,246,0.25), rgba(99,102,241,0.15))", border: "1px solid rgba(99,102,241,0.3)" }}
+                  >
+                    {systemIcons[i]}
+                  </div>
+                  <h3 className="text-[16px] font-bold text-[#f1f5f9] mb-2 tracking-[-0.01em]">{system.name}</h3>
+                  <p className="text-sm text-[#64748b] leading-[1.65]">{system.description}</p>
+                  <div className="mt-auto pt-5 border-t border-white/5 flex items-center gap-2">
+                    <span className="text-blue-500 text-xs">→</span>
+                    <span className="text-xs text-blue-400/80 font-medium">{system.outcome}</span>
+                  </div>
+                </div>
+              </AnimateIn>
+            ))}
+          </div>
+          <AnimateIn className="text-center mt-12" delay={200}>
+            <Link href="/systems" className="text-sm text-[#6b7280] border-b border-[#e5e7eb] pb-0.5 hover:text-[#111] hover:border-[#111] transition-colors duration-150">
+              See all systems in detail →
+            </Link>
+          </AnimateIn>
+        </div>
+      </section>
+
+      {/* ── WHY AUTOAITECH ── */}
+      <section className="bg-[#F9FAFB] py-24 px-6">
+        <div className="max-w-4xl mx-auto">
+          <AnimateIn className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#0a0a0a] tracking-tight mb-4">Why AutoAITech</h2>
+            <p className="text-[#6b7280] text-lg max-w-xl mx-auto">We're not selling software. We're running infrastructure inside your business.</p>
+          </AnimateIn>
+          <AnimateIn direction="up" delay={100}>
+            <div className="overflow-x-auto">
+              <div className="border border-slate-200 rounded-2xl overflow-hidden shadow-sm min-w-[560px]">
+                {/* Header */}
+                <div className="grid grid-cols-[1fr_200px_200px]">
+                  <div className="bg-slate-50 border-b border-slate-200 p-4" />
+                  <div className="bg-blue-900 border-b border-blue-800 p-4 flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-blue-400 flex-shrink-0" />
+                    <span className="text-[11px] font-bold tracking-[0.08em] uppercase text-blue-200">AutoAITech</span>
+                  </div>
+                  <div className="bg-slate-50 border-b border-slate-200 border-l border-slate-200 p-4 flex items-center">
+                    <span className="text-[11px] font-bold tracking-[0.08em] uppercase text-slate-400">Traditional Agency</span>
+                  </div>
+                </div>
+                {/* Rows */}
+                {[
+                  { label: "Always running", sub: "Systems operate continuously", aa: "24/7, no downtime", trad: "Office hours only" },
+                  { label: "ROI visibility", sub: "Know what's actually working", aa: "Live dashboard, every day", trad: "Monthly PDF reports" },
+                  { label: "Scales with you", sub: "Works across all clients", aa: "Infrastructure model", trad: "Retainer per client" },
+                  { label: "Connected systems", sub: "Everything feeds the growth loop", aa: "6 integrated systems", trad: "Disconnected tools" },
+                  { label: "Lead generation", sub: "Continuous pipeline", aa: "AI-driven, always on", trad: "Ad spend dependent" },
+                ].map((row, i, arr) => (
+                  <div key={row.label} className={`grid grid-cols-[1fr_200px_200px]${i < arr.length - 1 ? " border-b border-slate-100" : ""}`}>
+                    <div className="p-5">
+                      <p className="text-sm font-semibold text-slate-800">{row.label}</p>
+                      <p className="text-xs text-slate-400 mt-0.5">{row.sub}</p>
+                    </div>
+                    <div className="p-5 bg-blue-50 border-l border-blue-100 flex items-center gap-2">
+                      <span className="text-blue-600 font-bold text-xs flex-shrink-0">✓</span>
+                      <span className="text-xs font-semibold text-blue-800">{row.aa}</span>
+                    </div>
+                    <div className="p-5 border-l border-slate-100 flex items-center gap-2">
+                      <span className="text-slate-300 font-bold text-xs flex-shrink-0">✗</span>
+                      <span className="text-xs text-slate-500">{row.trad}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </AnimateIn>
+        </div>
+      </section>
+
       {/* ── HOW IT WORKS ── */}
       <section className="bg-[#f8fafc] py-24 px-6">
         <div className="max-w-5xl mx-auto">
@@ -237,6 +345,28 @@ export default function HomePage() {
               return [card];
             })}
           </div>
+        </div>
+      </section>
+
+      {/* ── FOUNDER NOTE ── */}
+      <section className="bg-white py-20 px-6 border-t border-slate-100">
+        <div className="max-w-3xl mx-auto">
+          <AnimateIn direction="up">
+            <blockquote className="text-center">
+              <p className="text-2xl sm:text-3xl font-bold text-slate-900 leading-snug tracking-tight mb-8">
+                "Most AI for agencies is either software you configure yourself, or one-off automations that stop working when the freelancer leaves. Neither compounds. Neither runs 24/7. We built AutoAITech to fix that."
+              </p>
+              <div className="flex items-center justify-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-sm font-bold text-white flex-shrink-0">
+                  SM
+                </div>
+                <div className="text-left">
+                  <p className="text-sm font-semibold text-slate-900">Sean Mulligan</p>
+                  <p className="text-xs text-slate-500">Founder, AutoAITech</p>
+                </div>
+              </div>
+            </blockquote>
+          </AnimateIn>
         </div>
       </section>
 
@@ -335,90 +465,6 @@ export default function HomePage() {
                     ))}
                   </div>
                 </div>
-              </div>
-            </div>
-          </AnimateIn>
-        </div>
-      </section>
-
-      {/* ── SYSTEMS OVERVIEW ── */}
-      <section className="bg-white py-24 px-6">
-        <div className="max-w-6xl mx-auto">
-          <AnimateIn className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#0a0a0a] tracking-tight mb-4">Six systems. One infrastructure.</h2>
-            <p className="text-[#6b7280] text-lg max-w-xl mx-auto">Each system runs continuously, generates measurable output, and connects to the others.</p>
-          </AnimateIn>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {systems.map((system, i) => (
-              <AnimateIn key={system.name} delay={i * 80} direction="up">
-                <div className="bg-[#0c0c14] rounded-xl p-7 system-card h-full cursor-default">
-                  <div
-                    className="w-[42px] h-[42px] rounded-[10px] flex items-center justify-center mb-5 flex-shrink-0"
-                    style={{ background: "linear-gradient(135deg, rgba(59,130,246,0.25), rgba(99,102,241,0.15))", border: "1px solid rgba(99,102,241,0.3)" }}
-                  >
-                    {systemIcons[i]}
-                  </div>
-                  <h3 className="text-[16px] font-bold text-[#f1f5f9] mb-2 tracking-[-0.01em]">{system.name}</h3>
-                  <p className="text-sm text-[#64748b] leading-[1.65]">{system.description}</p>
-                  <span className="inline-block mt-[18px] text-[11px] font-semibold tracking-[0.08em] uppercase text-[#3b82f6] opacity-80">
-                    {system.tag}
-                  </span>
-                </div>
-              </AnimateIn>
-            ))}
-          </div>
-          <AnimateIn className="text-center mt-12" delay={200}>
-            <Link href="/systems" className="text-sm text-[#6b7280] border-b border-[#e5e7eb] pb-0.5 hover:text-[#111] hover:border-[#111] transition-colors duration-150">
-              See all systems in detail →
-            </Link>
-          </AnimateIn>
-        </div>
-      </section>
-
-      {/* ── WHY AUTOAITECH ── */}
-      <section className="bg-[#F9FAFB] py-24 px-6">
-        <div className="max-w-4xl mx-auto">
-          <AnimateIn className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#0a0a0a] tracking-tight mb-4">Why AutoAITech</h2>
-            <p className="text-[#6b7280] text-lg max-w-xl mx-auto">We're not selling software. We're running infrastructure inside your business.</p>
-          </AnimateIn>
-          <AnimateIn direction="up" delay={100}>
-            <div className="overflow-x-auto">
-              <div className="border border-slate-200 rounded-2xl overflow-hidden shadow-sm min-w-[560px]">
-                {/* Header */}
-                <div className="grid grid-cols-[1fr_200px_200px]">
-                  <div className="bg-slate-50 border-b border-slate-200 p-4" />
-                  <div className="bg-blue-900 border-b border-blue-800 p-4 flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-blue-400 flex-shrink-0" />
-                    <span className="text-[11px] font-bold tracking-[0.08em] uppercase text-blue-200">AutoAITech</span>
-                  </div>
-                  <div className="bg-slate-50 border-b border-slate-200 border-l border-slate-200 p-4 flex items-center">
-                    <span className="text-[11px] font-bold tracking-[0.08em] uppercase text-slate-400">Traditional Agency</span>
-                  </div>
-                </div>
-                {/* Rows */}
-                {[
-                  { label: "Always running", sub: "Systems operate continuously", aa: "24/7, no downtime", trad: "Office hours only" },
-                  { label: "ROI visibility", sub: "Know what's actually working", aa: "Live dashboard, every day", trad: "Monthly PDF reports" },
-                  { label: "Scales with you", sub: "Works across all clients", aa: "Infrastructure model", trad: "Retainer per client" },
-                  { label: "Connected systems", sub: "Everything feeds the growth loop", aa: "6 integrated systems", trad: "Disconnected tools" },
-                  { label: "Lead generation", sub: "Continuous pipeline", aa: "AI-driven, always on", trad: "Ad spend dependent" },
-                ].map((row, i, arr) => (
-                  <div key={row.label} className={`grid grid-cols-[1fr_200px_200px]${i < arr.length - 1 ? " border-b border-slate-100" : ""}`}>
-                    <div className="p-5">
-                      <p className="text-sm font-semibold text-slate-800">{row.label}</p>
-                      <p className="text-xs text-slate-400 mt-0.5">{row.sub}</p>
-                    </div>
-                    <div className="p-5 bg-blue-50 border-l border-blue-100 flex items-center gap-2">
-                      <span className="text-blue-600 font-bold text-xs flex-shrink-0">✓</span>
-                      <span className="text-xs font-semibold text-blue-800">{row.aa}</span>
-                    </div>
-                    <div className="p-5 border-l border-slate-100 flex items-center gap-2">
-                      <span className="text-slate-300 font-bold text-xs flex-shrink-0">✗</span>
-                      <span className="text-xs text-slate-500">{row.trad}</span>
-                    </div>
-                  </div>
-                ))}
               </div>
             </div>
           </AnimateIn>
