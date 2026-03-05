@@ -1,13 +1,31 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 
 export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    function handleScroll() {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY < 10) {
+        setVisible(true);
+      } else if (currentScrollY < lastScrollY.current) {
+        setVisible(true);
+      } else {
+        setVisible(false);
+      }
+      lastScrollY.current = currentScrollY;
+    }
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0f]">
+    <nav className={`fixed top-0 left-0 right-0 z-50 bg-transparent transition-transform duration-300 ${visible ? "translate-y-0" : "-translate-y-full"}`}>
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="text-white font-bold text-xl tracking-tight">
