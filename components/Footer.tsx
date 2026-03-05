@@ -1,4 +1,5 @@
 import Link from "next/link";
+import LogoMark from "./LogoMark";
 
 export default function Footer() {
   return (
@@ -7,7 +8,8 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           {/* Brand */}
           <div>
-            <div className="text-white font-bold text-xl tracking-tight mb-2">
+            <div className="flex items-center gap-2.5 text-white font-bold text-xl tracking-tight mb-2">
+              <LogoMark className="w-6 h-6" />
               Auto<span className="gradient-text-blue">AI</span>Tech
             </div>
             <p className="text-slate-400 text-sm max-w-xs">

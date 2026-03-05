@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import LogoMark from "./LogoMark";
 
 export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -30,7 +31,8 @@ export default function Nav() {
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${visible ? "translate-y-0" : "-translate-y-full"} ${scrolled ? "bg-[#0a0a0f]/95 backdrop-blur-md" : "bg-transparent"}`}>
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="text-white font-bold text-xl tracking-tight">
+        <Link href="/" className="flex items-center gap-2.5 text-white font-bold text-xl tracking-tight">
+          <LogoMark className="w-6 h-6" />
           Auto<span className="gradient-text-blue">AI</span>Tech
         </Link>
 
