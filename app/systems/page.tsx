@@ -172,7 +172,7 @@ export default function SystemsPage() {
               href="/contact"
               className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-10 py-4 rounded-xl text-base transition-colors inline-block"
             >
-              Get in Touch
+              Work With Me
             </Link>
             <p className="text-slate-600 text-sm mt-4">Free. No commitment. Just clarity.</p>
           </AnimateIn>
