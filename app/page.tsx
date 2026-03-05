@@ -118,9 +118,10 @@ export default function HomePage() {
             <span className="text-blue-400 text-sm font-medium">Founder-led AI infrastructure for Irish &amp; UK agencies</span>
           </div>
 
-          <h1 className="text-5xl sm:text-6xl font-bold text-white leading-[1.08] tracking-tight">
+          <h1 className="text-6xl sm:text-7xl font-bold text-white leading-[1.08] tracking-tight">
             AI systems that{" "}
-            <span className="gradient-text">compound</span>{" "}
+            <span className="gradient-text">compound</span>
+            <br />
             your growth
           </h1>
 
@@ -146,8 +147,7 @@ export default function HomePage() {
           {stats.map((s) => (
             <div key={s.label}>
               <p className="text-3xl sm:text-4xl font-bold font-mono text-white">{s.number}</p>
-              <p className="text-blue-400 text-sm font-semibold mt-1">{s.label}</p>
-              <p className="text-slate-500 text-xs mt-0.5 hidden sm:block">{s.sub}</p>
+              <p className="text-slate-500 text-xs font-semibold uppercase tracking-widest mt-1">{s.label}</p>
             </div>
           ))}
         </div>
