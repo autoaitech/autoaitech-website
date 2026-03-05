@@ -132,7 +132,7 @@ export default function HomePage() {
 
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link href="/contact" className="btn-glow bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-xl text-base transition-colors">
-              Book a Strategy Call
+              Get in Touch
             </Link>
             <Link href="/systems" className="border border-white/10 hover:border-white/20 text-slate-300 hover:text-white font-semibold px-8 py-4 rounded-xl text-base transition-colors">
               See the Systems →
@@ -411,7 +411,7 @@ export default function HomePage() {
               Book a call. I'll look at what you're working with, tell you which systems make the most sense, and give you an honest picture of what's possible.
             </p>
             <Link href="/contact" className="btn-glow bg-blue-600 hover:bg-blue-700 text-white font-semibold px-10 py-4 rounded-xl text-base transition-colors inline-block">
-              Book a Strategy Call
+              Get in Touch
             </Link>
             <p className="text-slate-600 text-sm mt-4">No commitment. No pitch deck. Just a real conversation.</p>
           </AnimateIn>

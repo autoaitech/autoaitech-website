@@ -165,14 +165,14 @@ export default function SystemsPage() {
               Which systems are right for your business?
             </h2>
             <p className="text-slate-400 text-lg mb-10 max-w-xl mx-auto">
-              Book a free strategy call. We'll map your biggest growth bottlenecks to the systems that solve them
+              Get in touch and we'll map your biggest growth bottlenecks to the systems that solve them
               — and give you a clear picture of your ROI potential.
             </p>
             <Link
               href="/contact"
               className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-10 py-4 rounded-xl text-base transition-colors inline-block"
             >
-              Book a Strategy Call
+              Get in Touch
             </Link>
             <p className="text-slate-600 text-sm mt-4">Free. No commitment. Just clarity.</p>
           </AnimateIn>

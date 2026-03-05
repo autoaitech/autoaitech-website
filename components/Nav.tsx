@@ -55,7 +55,7 @@ export default function Nav() {
             href="/contact"
             className="btn-glow bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-colors"
           >
-            Book a Strategy Call
+            Get in Touch
           </Link>
         </div>
 
@@ -88,7 +88,7 @@ export default function Nav() {
             className="bg-blue-600 text-white text-sm font-semibold px-5 py-2.5 rounded-lg text-center"
             onClick={() => setMenuOpen(false)}
           >
-            Book a Strategy Call
+            Get in Touch
           </Link>
         </div>
       )}
