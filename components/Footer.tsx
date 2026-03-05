@@ -10,7 +10,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-2.5 text-white font-bold text-xl tracking-tight mb-2">
               <LogoMark className="w-6 h-6" />
-              Auto<span className="gradient-text-blue">AI</span>Tech
+              <span>Auto<span className="gradient-text-blue">AI</span>Tech</span>
             </div>
             <p className="text-slate-400 text-sm max-w-xs">
               AI infrastructure for agencies and B2B businesses. Built to run. Built to compound.

@@ -33,7 +33,7 @@ export default function Nav() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5 text-white font-bold text-xl tracking-tight">
           <LogoMark className="w-6 h-6" />
-          Auto<span className="gradient-text-blue">AI</span>Tech
+          <span>Auto<span className="gradient-text-blue">AI</span>Tech</span>
         </Link>
 
         {/* Desktop links */}
