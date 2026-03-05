@@ -7,7 +7,7 @@ export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0A0A0A]/80 backdrop-blur-md border-b border-white/5">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0f]">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="text-white font-bold text-xl tracking-tight">
@@ -57,7 +57,7 @@ export default function Nav() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden bg-[#0A0A0A]/95 border-t border-white/5 px-6 py-4 flex flex-col gap-4">
+        <div className="md:hidden bg-[#0a0a0f] border-t border-white/5 px-6 py-4 flex flex-col gap-4">
           <Link href="/" className="text-slate-300 hover:text-white text-sm font-medium" onClick={() => setMenuOpen(false)}>Home</Link>
           <Link href="/systems" className="text-slate-300 hover:text-white text-sm font-medium" onClick={() => setMenuOpen(false)}>Systems</Link>
           <Link href="/contact" className="text-slate-300 hover:text-white text-sm font-medium" onClick={() => setMenuOpen(false)}>Contact</Link>
