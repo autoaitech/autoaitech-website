@@ -47,7 +47,7 @@ export default function ContactPage() {
             Let's talk about your business
           </h1>
           <p className="text-slate-400 text-lg max-w-xl mx-auto leading-relaxed">
-            Tell us a bit about where you are and what you're trying to grow. We'll get back to you within 24 hours
+            Tell me a bit about where you are and what you're trying to grow. I'll get back to you within 24 hours
             with a clear next step.
           </p>
         </div>
@@ -69,7 +69,7 @@ export default function ContactPage() {
               <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-8 sm:p-12">
                 <h2 className="text-2xl font-bold text-slate-900 mb-2">Get in touch</h2>
                 <p className="text-slate-500 mb-8">
-                  No sales pitch. Just a real conversation about your business and whether we can help.
+                  No sales pitch. Just a real conversation about what you're trying to build and whether I can help.
                 </p>
 
                 <form onSubmit={handleSubmit} className="flex flex-col gap-6">
@@ -167,7 +167,7 @@ export default function ContactPage() {
                   )}
 
                   <p className="text-slate-400 text-sm">
-                    We respond to every message within 24 hours. Your details are never shared with third parties.
+                    I respond to every message within 24 hours. Your details are never shared with third parties.
                   </p>
                 </form>
               </div>

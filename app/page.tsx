@@ -5,7 +5,7 @@ const systems = [
   {
     name: "AI Lead Engine",
     tag: "Lead generation",
-    description: "Continuously identifies, qualifies, and delivers high-intent leads — without lifting a finger.",
+    description: "Continuously identifies, qualifies, and delivers high-intent leads into your pipeline.",
     outcome: "3–5× more qualified pipeline in 60 days",
   },
   {
@@ -23,19 +23,19 @@ const systems = [
   {
     name: "ROI Intelligence Hub",
     tag: "ROI visibility",
-    description: "Surfaces real ROI data across every system so you always know what's working and what isn't.",
+    description: "Pulls performance data from every connected system into one view. You always know what's working.",
     outcome: "Live ROI per system, per week — automatically",
   },
   {
     name: "Creative Intelligence Engine",
     tag: "Creative ops",
-    description: "Automates creative production and testing, so your best ads keep running and evolving.",
+    description: "Monitors ad performance, spots what's working, and automates testing of new variations.",
     outcome: "Lower CPAs. Higher ROAS. Week over week.",
   },
   {
     name: "Campaign Monitoring Agents",
     tag: "Campaign intelligence",
-    description: "Watches your campaigns 24/7 and flags underperformance before it costs you money.",
+    description: "Watches your live ad accounts around the clock and flags problems before they cost you.",
     outcome: "Catch campaign issues hours before they're expensive",
   },
 ];
@@ -97,7 +97,7 @@ const stepIcons = [
 const stats = [
   { number: "35+", label: "Integrations", sub: "CRM, email, ads, payments & more" },
   { number: "6", label: "AI Systems", sub: "Running 24/7 inside your business" },
-  { number: "100%", label: "ROI Visible", sub: "Every system tracked in real time" },
+  { number: "24/7", label: "Always Running", sub: "No holidays, no sick days, no downtime" },
 ];
 
 export default function HomePage() {
@@ -119,7 +119,7 @@ export default function HomePage() {
             <div className="lg:w-1/2 flex flex-col gap-6 text-center lg:text-left">
               <div className="inline-flex items-center gap-2 bg-blue-600/10 border border-blue-600/20 rounded-full px-4 py-1.5 w-fit mx-auto lg:mx-0">
                 <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
-                <span className="text-blue-400 text-sm font-medium">AI infrastructure for Irish &amp; UK agencies</span>
+                <span className="text-blue-400 text-sm font-medium">Founder-led AI infrastructure for Irish &amp; UK agencies</span>
               </div>
 
               <h1 className="text-5xl sm:text-6xl font-bold text-white leading-[1.08] tracking-tight">
@@ -130,7 +130,7 @@ export default function HomePage() {
 
               <p className="text-slate-400 text-lg leading-relaxed max-w-xl mx-auto lg:mx-0">
                 AutoAITech builds and runs AI infrastructure inside your business — finding leads, retaining clients,
-                and monitoring campaigns continuously. Real ROI. No fluff.
+                and monitoring campaigns continuously. I build it. I run it. You own the results.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
@@ -267,7 +267,7 @@ export default function HomePage() {
         <div className="max-w-4xl mx-auto">
           <AnimateIn className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-[#0a0a0a] tracking-tight mb-4">Why AutoAITech</h2>
-            <p className="text-[#6b7280] text-lg max-w-xl mx-auto">We're not selling software. We're running infrastructure inside your business.</p>
+            <p className="text-[#6b7280] text-lg max-w-xl mx-auto">Not software you configure. Not a freelancer you manage. Infrastructure that runs.</p>
           </AnimateIn>
           <AnimateIn direction="up" delay={100}>
             <div className="overflow-x-auto">
@@ -317,7 +317,7 @@ export default function HomePage() {
         <div className="max-w-5xl mx-auto">
           <AnimateIn className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-[#0a0a0a] tracking-tight mb-4">How it works</h2>
-            <p className="text-[#6b7280] text-lg max-w-xl mx-auto">From connection to compounding ROI — in three straightforward steps.</p>
+            <p className="text-[#6b7280] text-lg max-w-xl mx-auto">Three steps. Then it runs.</p>
           </AnimateIn>
           <div className="grid grid-cols-1 md:grid-cols-[1fr_48px_1fr_48px_1fr] items-start">
             {steps.flatMap((step, i) => {
@@ -354,7 +354,7 @@ export default function HomePage() {
           <AnimateIn direction="up">
             <blockquote className="text-center">
               <p className="text-2xl sm:text-3xl font-bold text-slate-900 leading-snug tracking-tight mb-8">
-                "Most AI for agencies is either software you configure yourself, or one-off automations that stop working when the freelancer leaves. Neither compounds. Neither runs 24/7. We built AutoAITech to fix that."
+                "I got tired of watching agencies pay for AI tools that needed a full-time person to babysit them. Automations that broke. Software nobody logged into. I built AutoAITech because agencies deserve systems that actually run — not ones they have to run."
               </p>
               <div className="flex items-center justify-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-sm font-bold text-white flex-shrink-0">
@@ -384,7 +384,7 @@ export default function HomePage() {
               Your clients see exactly what the AI is doing
             </h2>
             <p className="text-slate-400 text-lg leading-relaxed">
-              Every agency we work with gets access to the AutoAITech Client OS — a live dashboard showing active
+              Every agency I work with gets access to the AutoAITech Client OS — a live dashboard showing active
               systems, integration health, and ROI in real time. No more "what's it doing?" calls.
             </p>
             <ul className="flex flex-col gap-3">
@@ -482,8 +482,7 @@ export default function HomePage() {
               <span className="gradient-text">compounds</span>?
             </h2>
             <p className="text-slate-400 text-lg mb-10 max-w-xl mx-auto">
-              Book a free strategy call. We'll look at your business, identify the highest-leverage systems,
-              and show you exactly what your ROI could look like.
+              Book a call. I'll look at what you're working with, tell you which systems make the most sense, and give you an honest picture of what's possible.
             </p>
             <Link href="/contact" className="btn-glow bg-blue-600 hover:bg-blue-700 text-white font-semibold px-10 py-4 rounded-xl text-base transition-colors inline-block">
               Book a Strategy Call
