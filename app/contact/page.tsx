@@ -32,7 +32,7 @@ export default function ContactPage() {
       if (!res.ok) throw new Error("Failed");
       setSubmitted(true);
     } catch {
-      setError("Something went wrong. Please email us directly at hello@autoaitech.co");
+      setError("Something went wrong. Please email me directly at sean@autoaitech.co");
     } finally {
       setSending(false);
     }
@@ -59,10 +59,14 @@ export default function ContactPage() {
           <AnimateIn direction="up">
             {submitted ? (
               <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-12 text-center">
-                <div className="text-5xl mb-6">✅</div>
-                <h2 className="text-2xl font-bold text-slate-900 mb-3">We got your message</h2>
+                <div className="w-14 h-14 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center mx-auto mb-6">
+                  <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 stroke-blue-600">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </div>
+                <h2 className="text-2xl font-bold text-slate-900 mb-3">Message received</h2>
                 <p className="text-slate-500 text-lg leading-relaxed">
-                  Thanks for reaching out. Someone from our team will be in touch within 24 hours to set up a call.
+                  Thanks for reaching out. I'll be in touch within 24 hours with a clear next step.
                 </p>
               </div>
             ) : (
@@ -180,13 +184,42 @@ export default function ContactPage() {
       <section className="bg-white py-16 px-6 border-t border-slate-100">
         <div className="max-w-4xl mx-auto grid sm:grid-cols-3 gap-8 text-center">
           {[
-            { icon: "🕐", title: "24-hour response", desc: "We respond to every enquiry within one business day." },
-            { icon: "🤝", title: "No commitment", desc: "A strategy call is a conversation, not a sales pitch." },
-            { icon: "🇮🇪", title: "Ireland-based", desc: "We work with Irish and UK agencies who want real results." },
+            {
+              icon: (
+                <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 stroke-blue-600">
+                  <circle cx="12" cy="12" r="9" />
+                  <polyline points="12 7 12 12 15 15" />
+                </svg>
+              ),
+              title: "24-hour response",
+              desc: "I respond to every enquiry within one business day.",
+            },
+            {
+              icon: (
+                <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 stroke-blue-600">
+                  <path d="M17 8h2a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2v3l-4-3H9a2 2 0 0 1-2-2v-1" />
+                  <path d="M3 6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H8l-4 3V6z" />
+                </svg>
+              ),
+              title: "No commitment",
+              desc: "A strategy call is a conversation, not a sales pitch.",
+            },
+            {
+              icon: (
+                <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 stroke-blue-600">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M12 3a14.5 14.5 0 0 1 0 18M3 12h18" />
+                </svg>
+              ),
+              title: "Ireland-based",
+              desc: "I work with Irish and UK agencies who want real results.",
+            },
           ].map((item, i) => (
             <AnimateIn key={item.title} delay={i * 100} direction="up">
               <div className="flex flex-col items-center gap-3">
-                <span className="text-3xl">{item.icon}</span>
+                <div className="w-12 h-12 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center">
+                  {item.icon}
+                </div>
                 <h3 className="font-bold text-slate-900">{item.title}</h3>
                 <p className="text-slate-500 text-sm">{item.desc}</p>
               </div>
