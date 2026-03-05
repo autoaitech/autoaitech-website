@@ -15,6 +15,20 @@ export const metadata: Metadata = {
   description:
     "AutoAITech builds and runs AI systems inside your business that generate measurable ROI — continuously. Built for marketing agencies and B2B service businesses in Ireland and the UK.",
   keywords: ["AI automation", "agency AI", "AI infrastructure", "B2B AI", "marketing automation Ireland"],
+  openGraph: {
+    title: "AutoAITech — AI Infrastructure for Agencies",
+    description:
+      "AutoAITech builds and runs AI systems inside your business that generate measurable ROI — continuously. Built for marketing agencies and B2B service businesses in Ireland and the UK.",
+    url: "https://autoaitech.co",
+    siteName: "AutoAITech",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AutoAITech — AI Infrastructure for Agencies",
+    description:
+      "AutoAITech builds and runs AI systems inside your business that generate measurable ROI — continuously.",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

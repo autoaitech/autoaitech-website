@@ -8,7 +8,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="text-white font-bold text-xl tracking-tight mb-2">
-              Auto<span className="text-blue-500">AI</span>Tech
+              Auto<span className="gradient-text-blue">AI</span>Tech
             </div>
             <p className="text-slate-400 text-sm max-w-xs">
               AI infrastructure for agencies and B2B businesses. Built to run. Built to compound.

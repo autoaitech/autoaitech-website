@@ -96,7 +96,7 @@ export default function HomePage() {
             <div className="lg:w-1/2 flex flex-col gap-6 text-center lg:text-left">
               <div className="inline-flex items-center gap-2 bg-blue-600/10 border border-blue-600/20 rounded-full px-4 py-1.5 w-fit mx-auto lg:mx-0">
                 <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
-                <span className="text-blue-400 text-sm font-medium">AI infrastructure for Irish agencies</span>
+                <span className="text-blue-400 text-sm font-medium">AI infrastructure for Irish &amp; UK agencies</span>
               </div>
 
               <h1 className="text-5xl sm:text-6xl font-bold text-white leading-[1.08] tracking-tight">
@@ -376,7 +376,7 @@ export default function HomePage() {
       </section>
 
       {/* ── WHY AUTOAITECH ── */}
-      <section className="bg-white py-24 px-6">
+      <section className="bg-[#F9FAFB] py-24 px-6">
         <div className="max-w-4xl mx-auto">
           <AnimateIn className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-[#0a0a0a] tracking-tight mb-4">Why AutoAITech</h2>

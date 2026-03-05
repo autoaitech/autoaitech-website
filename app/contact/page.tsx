@@ -5,6 +5,8 @@ import AnimateIn from "@/components/AnimateIn";
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
   const [form, setForm] = useState({
     name: "",
     business: "",
@@ -17,10 +19,23 @@ export default function ContactPage() {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    console.log("Form submission:", form);
-    setSubmitted(true);
+    setSending(true);
+    setError("");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error("Failed");
+      setSubmitted(true);
+    } catch {
+      setError("Something went wrong. Please email us directly at hello@autoaitech.co");
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
@@ -141,10 +156,15 @@ export default function ContactPage() {
 
                   <button
                     type="submit"
-                    className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-xl text-base transition-colors w-full sm:w-auto"
+                    disabled={sending}
+                    className="bg-blue-600 hover:bg-blue-700 disabled:opacity-60 disabled:cursor-not-allowed text-white font-semibold px-8 py-4 rounded-xl text-base transition-colors w-full sm:w-auto"
                   >
-                    Send message
+                    {sending ? "Sending…" : "Send message"}
                   </button>
+
+                  {error && (
+                    <p className="text-red-500 text-sm">{error}</p>
+                  )}
 
                   <p className="text-slate-400 text-sm">
                     We respond to every message within 24 hours. Your details are never shared with third parties.
