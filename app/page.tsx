@@ -112,104 +112,30 @@ export default function HomePage() {
         <div className="absolute -top-32 left-1/3 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute top-1/2 right-0 w-[400px] h-[400px] bg-cyan-500/8 rounded-full blur-[100px] pointer-events-none" />
 
-        <div className="relative max-w-7xl mx-auto">
-          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+        <div className="relative max-w-4xl mx-auto text-center flex flex-col items-center gap-6">
+          <div className="inline-flex items-center gap-2 bg-blue-600/10 border border-blue-600/20 rounded-full px-4 py-1.5 w-fit mx-auto">
+            <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
+            <span className="text-blue-400 text-sm font-medium">Founder-led AI infrastructure for Irish &amp; UK agencies</span>
+          </div>
 
-            {/* Left: copy */}
-            <div className="lg:w-1/2 flex flex-col gap-6 text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 bg-blue-600/10 border border-blue-600/20 rounded-full px-4 py-1.5 w-fit mx-auto lg:mx-0">
-                <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
-                <span className="text-blue-400 text-sm font-medium">Founder-led AI infrastructure for Irish &amp; UK agencies</span>
-              </div>
+          <h1 className="text-5xl sm:text-6xl font-bold text-white leading-[1.08] tracking-tight">
+            AI systems that{" "}
+            <span className="gradient-text">compound</span>{" "}
+            your growth
+          </h1>
 
-              <h1 className="text-5xl sm:text-6xl font-bold text-white leading-[1.08] tracking-tight">
-                AI systems that{" "}
-                <span className="gradient-text">compound</span>{" "}
-                your growth
-              </h1>
+          <p className="text-slate-400 text-lg leading-relaxed max-w-xl mx-auto">
+            AutoAITech builds and runs AI infrastructure inside your business — finding leads, retaining clients,
+            and monitoring campaigns continuously. I build it. I run it. You own the results.
+          </p>
 
-              <p className="text-slate-400 text-lg leading-relaxed max-w-xl mx-auto lg:mx-0">
-                AutoAITech builds and runs AI infrastructure inside your business — finding leads, retaining clients,
-                and monitoring campaigns continuously. I build it. I run it. You own the results.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-                <Link href="/contact" className="btn-glow bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-xl text-base transition-colors">
-                  Book a Strategy Call
-                </Link>
-                <Link href="/systems" className="border border-white/10 hover:border-white/20 text-slate-300 hover:text-white font-semibold px-8 py-4 rounded-xl text-base transition-colors">
-                  See the Systems →
-                </Link>
-              </div>
-            </div>
-
-            {/* Right: Dashboard mockup */}
-            <div className="lg:w-1/2 w-full max-w-lg mx-auto lg:mx-0">
-              <div className="rounded-2xl border border-white/10 bg-[#111118] shadow-2xl overflow-hidden">
-                {/* Window chrome */}
-                <div className="bg-[#0d0d12] border-b border-white/5 px-4 py-3 flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-red-500/50" />
-                  <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
-                  <div className="w-3 h-3 rounded-full bg-green-500/50" />
-                  <span className="ml-3 text-slate-500 text-xs font-mono">Client OS — Dashboard</span>
-                </div>
-
-                <div className="p-5 flex flex-col gap-4">
-                  {/* Stats row */}
-                  <div className="grid grid-cols-3 gap-3">
-                    {[
-                      { label: "Leads", value: "247", delta: "↑ 23%", color: "text-green-400" },
-                      { label: "Systems", value: "4/6", delta: "Live now", color: "text-blue-400" },
-                      { label: "ROI", value: "€8.4k", delta: "↑ 41%", color: "text-green-400" },
-                    ].map((s) => (
-                      <div key={s.label} className="bg-[#0d0d12] rounded-xl p-3 border border-white/5">
-                        <p className="text-slate-500 text-xs mb-1">{s.label}</p>
-                        <p className={`font-mono text-xl font-bold ${s.color}`}>{s.value}</p>
-                        <p className="text-slate-500 text-xs mt-0.5">{s.delta}</p>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Chart */}
-                  <div className="bg-[#0d0d12] rounded-xl p-4 border border-white/5">
-                    <p className="text-slate-500 text-xs mb-3 font-mono">Lead Activity — Last 7 Days</p>
-                    <div className="flex items-end gap-1.5 h-14">
-                      {[38, 62, 48, 85, 55, 92, 70].map((h, i) => (
-                        <div
-                          key={i}
-                          className="flex-1 rounded-sm"
-                          style={{
-                            height: `${h}%`,
-                            background: `rgba(59,130,246,${0.2 + (h / 100) * 0.6})`,
-                          }}
-                        />
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Active systems */}
-                  <div className="bg-[#0d0d12] rounded-xl p-4 border border-white/5">
-                    <p className="text-slate-500 text-xs mb-3 font-mono">Active Systems</p>
-                    <div className="flex flex-col gap-2">
-                      {[
-                        { name: "AI Lead Engine", status: "running" },
-                        { name: "Retention Reactor", status: "running" },
-                        { name: "Campaign Monitoring", status: "running" },
-                        { name: "ROI Intelligence Hub", status: "syncing" },
-                      ].map((sys) => (
-                        <div key={sys.name} className="flex items-center justify-between">
-                          <span className="text-slate-300 text-xs">{sys.name}</span>
-                          <span className={`text-xs font-mono flex items-center gap-1.5 ${sys.status === "running" ? "text-green-400" : "text-blue-400"}`}>
-                            <span className={`w-1.5 h-1.5 rounded-full ${sys.status === "running" ? "bg-green-400" : "bg-blue-400"} animate-pulse`} />
-                            {sys.status}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Link href="/contact" className="btn-glow bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-xl text-base transition-colors">
+              Book a Strategy Call
+            </Link>
+            <Link href="/systems" className="border border-white/10 hover:border-white/20 text-slate-300 hover:text-white font-semibold px-8 py-4 rounded-xl text-base transition-colors">
+              See the Systems →
+            </Link>
           </div>
         </div>
       </section>
