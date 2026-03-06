@@ -5,7 +5,7 @@ import AnimateIn from "@/components/AnimateIn";
 export const metadata: Metadata = {
   title: "Systems — AutoAITech",
   description:
-    "The AI infrastructure AutoAITech builds for Irish and UK agencies — lead response, proposals, onboarding, reporting, reviews, and reactivation. Running 24/7.",
+    "The six AI systems AutoAITech builds for agencies — Smart Onboarding Engine, AI Lead Engine, Retention Reactor AI, ROI Intelligence Hub, Creative Intelligence Engine, and Campaign Monitoring Agents. Running 24/7.",
 };
 
 /* ── Design tokens ── */
@@ -24,13 +24,28 @@ const BORDER       = "#e2e1de";
 /* ── Systems data ── */
 const systems = [
   {
-    name: "Lead Response Engine",
-    tag: "follow-up",
-    tagline: "Every lead followed up. Every time.",
-    what: "Responds to every inbound lead fast — personalised, qualified, and booked before your competitors have even opened their inbox. Pulls from your forms, website, and CRM to trigger the right message at the right moment.",
-    replaces: "Leads sitting in your inbox for hours. Manual follow-up sequences that fall behind. Prospects going cold before anyone gets back to them.",
-    roi: "The first agency to respond wins the client. This system makes sure that's always you.",
-    integrates: ["CRM (HubSpot, Pipedrive)", "Email (Gmail, Outlook)", "Forms (Typeform, Webflow)", "Calendar"],
+    name: "Smart Onboarding Engine",
+    tag: "onboarding",
+    tagline: "First impressions run on autopilot.",
+    what: "Runs every step of new client activation automatically — discovery, access collection, technical audit, strategy approval, and campaign build. Each step triggers the next. Every delay is flagged. Nothing falls through and nobody has to chase.",
+    replaces: "Three-week onboarding processes that should take three days. Email chains chasing access credentials and document approvals. Inconsistent first impressions that damage client relationships before the work has even started.",
+    roi: "Clients who activate in days — not weeks — stay longer and refer more. Every day of delay is a day they're paying without seeing results. Fast onboarding is the foundation of strong retention.",
+    integrates: ["Email", "CRM (HubSpot, Pipedrive)", "File Storage", "Calendar"],
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" style={{ width: 22, height: 22, stroke: GREEN }}>
+        <polyline points="9 11 12 14 22 4"/>
+        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+      </svg>
+    ),
+  },
+  {
+    name: "AI Lead Engine",
+    tag: "acquisition",
+    tagline: "Never run out of qualified leads again.",
+    what: "Discovers target companies, researches decision-makers, generates personalised outreach, runs multi-step sequences, and routes qualified replies directly to your team. Runs on a continuous cycle — generating pipeline while your agency focuses on delivery.",
+    replaces: "Founders and account managers spending 40% of their week on prospecting. Generic sequences that get ignored. A CRM that grows with contacts nobody is actively working.",
+    roi: "Typically generates 3–5× more qualified pipeline within 60 days. Consistent outbound becomes structural — not something that only happens when someone has time for it.",
+    integrates: ["Email (Gmail, Outlook)", "CRM (HubSpot, Pipedrive)", "LinkedIn", "Calendar"],
     icon: (
       <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" style={{ width: 22, height: 22, stroke: GREEN }}>
         <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
@@ -39,45 +54,27 @@ const systems = [
     ),
   },
   {
-    name: "Proposal Engine",
-    tag: "sales",
-    tagline: "Proposals in hours, not days.",
-    what: "Generates fully personalised proposals directly from a call transcript or briefing notes. Branded, properly scoped, and ready to send — in under two hours instead of two days. Each proposal reflects the client's specific situation, not a generic template.",
-    replaces: "Hours writing proposals from scratch. Inconsistent scoping. Deals going cold while you're still writing the doc.",
-    roi: "Speed closes deals. A proposal that lands the same day the call ends converts at a completely different rate.",
-    integrates: ["CRM", "Email", "Google Docs / Notion", "Calendar"],
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" style={{ width: 22, height: 22, stroke: GREEN }}>
-        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-        <polyline points="14 2 14 8 20 8"/>
-        <line x1="16" y1="13" x2="8" y2="13"/>
-        <line x1="16" y1="17" x2="8" y2="17"/>
-        <polyline points="10 9 9 9 8 9"/>
-      </svg>
-    ),
-  },
-  {
-    name: "Onboarding System",
+    name: "Retention Reactor AI",
     tag: "retention",
-    tagline: "Onboard clients without chasing them.",
-    what: "Structures the entire new client journey — strategy docs, approvals, data collection, access requests — and moves it forward automatically. Every step is tracked. Every delay is flagged. Nothing gets missed and nobody has to chase.",
-    replaces: "Three-week onboarding that should take three days. Back-and-forth email chains. Inconsistent client experiences that damage first impressions.",
-    roi: "A client who onboards smoothly stays longer and refers more. A client who doesn't becomes a support burden from week one.",
-    integrates: ["Email", "CRM", "File storage (Google Drive)", "Calendar"],
+    tagline: "Keep the clients you've already won.",
+    what: "Continuously monitors every client account for disengagement signals — email engagement drops, campaign performance declines, billing pattern changes — and automatically triggers the right intervention at the right moment. Check-ins, escalation alerts, upsell prompts.",
+    replaces: "Finding out a client is unhappy on the cancellation call. Account managers relying on gut feel and memory. Churn that could have been prevented with one well-timed message.",
+    roi: "Agencies lose 20–40% of clients every year. Reducing churn by 10% is worth more than doubling new client wins. This system makes early detection automatic — across every account, at once.",
+    integrates: ["CRM", "Email", "Google Analytics", "Billing"],
     icon: (
       <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" style={{ width: 22, height: 22, stroke: GREEN }}>
-        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
       </svg>
     ),
   },
   {
-    name: "Reporting System",
+    name: "ROI Intelligence Hub",
     tag: "visibility",
-    tagline: "Clients see their ROI. Automatically.",
-    what: "Pulls performance data from every connected system — ads, analytics, CRM — and generates a clear monthly report showing what your agency delivered. Your clients get evidence of value. You stop scrambling before every review call.",
-    replaces: "Manual data pulls, spreadsheet formatting, last-minute report building the night before a client call.",
-    roi: "Clients who clearly see ROI renew. Clients who don't — even if the results are good — churn. This system closes that gap.",
-    integrates: ["Google Analytics / GA4", "Meta Ads", "Google Ads", "CRM", "Email"],
+    tagline: "Know what's working — always.",
+    what: "Aggregates output from every connected system — ads, analytics, CRM — into attributed revenue, time saved, and pipeline metrics. Generates a branded monthly report showing exactly what your agency delivered. Automatically, every month, without anyone building a spreadsheet.",
+    replaces: "Manual data pulls the night before a review call. Clients who can't see what they're paying for. Retainers that feel like costs rather than investments.",
+    roi: "Clear, continuous ROI visibility is the single biggest driver of client renewal. Clients who see evidence of value don't leave — even in budget conversations.",
+    integrates: ["Google Analytics / GA4", "Google Ads", "Meta Ads", "CRM", "Email"],
     icon: (
       <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" style={{ width: 22, height: 22, stroke: GREEN }}>
         <line x1="18" y1="20" x2="18" y2="10"/>
@@ -88,32 +85,33 @@ const systems = [
     ),
   },
   {
-    name: "Review Engine",
-    tag: "reputation",
-    tagline: "Good work becomes visible proof.",
-    what: "Identifies the exact moment a client is happiest — after a win, after a positive call, after a result lands — and sends a well-timed, personalised review request. Systematically turns great work into public evidence of great work.",
-    replaces: "Awkwardly asking for reviews manually. Forgetting to follow up. Delivering strong results that nobody outside the relationship ever sees.",
-    roi: "Reviews are the most trusted signal for a new agency prospect. This system builds that asset automatically over time.",
-    integrates: ["Email", "CRM", "Google Reviews", "Trustpilot"],
+    name: "Creative Intelligence Engine",
+    tag: "creative",
+    tagline: "Your best ads keep getting better.",
+    what: "Ingests ad performance data and your creative library, identifies winning patterns, generates new variants built on what's working, and routes top performers for approval. Continuous creative iteration on a weekly cycle — not a quarterly refresh.",
+    replaces: "Teams guessing what will perform. Weeks between creative refreshes. Ad fatigue burning through budget while the next iteration is still being briefed.",
+    roi: "Most agencies waste 30–40% of ad spend on creative that should have been retired weeks earlier. Tightening the feedback loop typically pays for itself in the first month.",
+    integrates: ["Meta Ads", "Google Ads", "Creative Storage", "CRM"],
     icon: (
       <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" style={{ width: 22, height: 22, stroke: GREEN }}>
-        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19.071 4.929a10 10 0 1 0 0 14.142"/>
+        <path d="M12 2v2M12 20v2M2 12h2M20 12h2"/>
       </svg>
     ),
   },
   {
-    name: "Reactivation Engine",
-    tag: "growth",
-    tagline: "Dormant leads become live conversations.",
-    what: "Re-engages your dormant leads and past clients with consistent, contextual sequences that feel human — not blasted. Pulls from your CRM history to reference past conversations, past work, and relevant timing. Reactivation that actually gets replies.",
-    replaces: "A CRM full of cold contacts you've stopped reaching out to. Manual re-engagement that never happens because there's always something more urgent.",
-    roi: "You've already done the hard work of building a relationship with these people. This system turns that dormant asset into active pipeline.",
-    integrates: ["CRM", "Email (Gmail, Outlook)", "LinkedIn", "Calendar"],
+    name: "Campaign Monitoring Agents",
+    tag: "performance",
+    tagline: "24/7 eyes on every campaign.",
+    what: "Monitors campaigns continuously across every connected platform — flagging spend anomalies, performance drops, and optimisation opportunities the moment they appear. Issues are surfaced and documented before they become expensive.",
+    replaces: "Manually checking dashboards every morning. Discovering a budget issue on a Friday afternoon. Finding out about a campaign problem after it's already cost thousands in wasted spend.",
+    roi: "Campaign waste is the most visible failure point in any agency relationship. Catching an issue 6 hours earlier can save thousands. This system makes that monitoring permanent — not dependent on who's working that day.",
+    integrates: ["Google Ads", "Meta Ads", "LinkedIn Ads", "TikTok Ads", "Google Analytics"],
     icon: (
       <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" style={{ width: 22, height: 22, stroke: GREEN }}>
-        <polyline points="1 4 1 10 7 10"/>
-        <polyline points="23 20 23 14 17 14"/>
-        <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/>
+        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+        <circle cx="12" cy="12" r="3"/>
       </svg>
     ),
   },
@@ -143,11 +141,11 @@ export default function SystemsPage() {
           <h1
             style={{ ...display, fontSize: "clamp(2.4rem, 4vw, 3.4rem)", fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.02em", color: INK, maxWidth: 700, marginBottom: "1.25rem" }}
           >
-            The work your agency keeps doing manually.
+            Six systems. Built to compound.
           </h1>
           <p style={{ ...sans, fontSize: 17, fontWeight: 300, color: INK_MID, maxWidth: 560, lineHeight: 1.65 }}>
-            We identify your highest-impact gaps and build the infrastructure to close them. Each system
-            runs continuously, connects to the others, and produces measurable output every week.
+            Each system runs continuously, generates measurable output, and feeds data into the others.
+            Not a tool. Not an automation. Infrastructure that gets more valuable over time.
           </p>
         </AnimateIn>
       </section>

@@ -3,6 +3,52 @@
 import { useState, FormEvent } from "react";
 import AnimateIn from "@/components/AnimateIn";
 
+/* ── Design tokens (matches site theme) ── */
+const display: React.CSSProperties = { fontFamily: "var(--font-display)" };
+const mono: React.CSSProperties    = { fontFamily: "var(--font-mono)" };
+const sans: React.CSSProperties    = { fontFamily: "var(--font-sans)" };
+
+const GREEN        = "#059669";
+const GREEN_LIGHT  = "#d1fae5";
+const GREEN_BORDER = "#a7f3d0";
+const INK          = "#111110";
+const INK_MID      = "#6b6a67";
+const INK_FAINT    = "#a09e9b";
+const BORDER       = "#e2e1de";
+
+function SectionLabel({ text }: { text: string }) {
+  return (
+    <div className="flex items-center gap-2.5 mb-4">
+      <div style={{ width: 24, height: 1, background: GREEN }} />
+      <span style={{ ...mono, fontSize: 10, fontWeight: 500, color: GREEN, textTransform: "uppercase", letterSpacing: "0.1em" }}>
+        {text}
+      </span>
+    </div>
+  );
+}
+
+const inputStyle: React.CSSProperties = {
+  ...sans,
+  fontSize: 14,
+  color: INK,
+  border: `1px solid ${BORDER}`,
+  borderRadius: 8,
+  padding: "12px 16px",
+  width: "100%",
+  outline: "none",
+  background: "white",
+  transition: "border-color 0.15s",
+};
+
+const labelStyle: React.CSSProperties = {
+  ...sans,
+  fontSize: 13,
+  fontWeight: 600,
+  color: INK,
+  display: "block",
+  marginBottom: 6,
+};
+
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
@@ -40,47 +86,83 @@ export default function ContactPage() {
 
   return (
     <>
-      {/* Hero */}
-      <section className="bg-[#0A0A0A] pt-24 pb-16 px-6 text-center">
-        <div className="max-w-3xl mx-auto">
-          <h1 className="text-4xl sm:text-5xl font-bold text-white tracking-tight mb-4">
-            Let's talk about your business
+      {/* ── HERO ── */}
+      <section
+        className="mt-[56px] border-b"
+        style={{ background: "white", padding: "5rem 4rem 4rem", borderColor: BORDER }}
+      >
+        <AnimateIn>
+          <SectionLabel text="Get in touch" />
+          <h1
+            style={{ ...display, fontSize: "clamp(2.4rem, 4vw, 3.4rem)", fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.02em", color: INK, maxWidth: 620, marginBottom: "1.25rem" }}
+          >
+            Tell us your biggest bottleneck.
           </h1>
-          <p className="text-slate-400 text-lg max-w-xl mx-auto leading-relaxed">
-            Tell me a bit about where you are and what you're trying to grow. I'll get back to you within 24 hours
-            with a clear next step.
+          <p style={{ ...sans, fontSize: 17, fontWeight: 300, color: INK_MID, maxWidth: 520, lineHeight: 1.65 }}>
+            No sales pitch. One 30-minute call and we&apos;ll tell you exactly what your agency is missing
+            and what the infrastructure looks like in practice.
           </p>
-        </div>
+        </AnimateIn>
       </section>
 
-      {/* Form section */}
-      <section className="bg-[#F9FAFB] py-20 px-6">
-        <div className="max-w-2xl mx-auto">
+      {/* ── FORM ── */}
+      <section style={{ background: "#fafaf9", padding: "5rem 4rem", borderBottom: `1px solid ${BORDER}` }}>
+        <div style={{ maxWidth: 640, margin: "0 auto" }}>
           <AnimateIn direction="up">
             {submitted ? (
-              <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-12 text-center">
-                <div className="w-14 h-14 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center mx-auto mb-6">
-                  <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 stroke-blue-600">
+              /* ── Success state ── */
+              <div
+                style={{
+                  background: "white",
+                  border: `1px solid ${BORDER}`,
+                  borderRadius: 12,
+                  padding: "4rem 3rem",
+                  textAlign: "center",
+                }}
+              >
+                <div
+                  style={{
+                    width: 52, height: 52,
+                    borderRadius: "50%",
+                    background: GREEN_LIGHT,
+                    border: `1px solid ${GREEN_BORDER}`,
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    margin: "0 auto 1.5rem",
+                  }}
+                >
+                  <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: 22, height: 22, stroke: GREEN }}>
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                 </div>
-                <h2 className="text-2xl font-bold text-slate-900 mb-3">Message received</h2>
-                <p className="text-slate-500 text-lg leading-relaxed">
-                  Thanks for reaching out. I'll be in touch within 24 hours with a clear next step.
+                <h2 style={{ ...display, fontSize: "1.6rem", fontWeight: 700, color: INK, letterSpacing: "-0.02em", marginBottom: "0.75rem" }}>
+                  Message received
+                </h2>
+                <p style={{ ...sans, fontSize: 16, fontWeight: 300, color: INK_MID, lineHeight: 1.65, maxWidth: 380, margin: "0 auto" }}>
+                  I&apos;ll be in touch within 24 hours with a clear next step.
                 </p>
               </div>
             ) : (
-              <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-8 sm:p-12">
-                <h2 className="text-2xl font-bold text-slate-900 mb-2">Get in touch</h2>
-                <p className="text-slate-500 mb-8">
-                  No sales pitch. Just a real conversation about what you're trying to build and whether I can help.
+              /* ── Form ── */
+              <div
+                style={{
+                  background: "white",
+                  border: `1px solid ${BORDER}`,
+                  borderRadius: 12,
+                  padding: "2.5rem 3rem",
+                }}
+              >
+                <h2 style={{ ...display, fontSize: "1.4rem", fontWeight: 700, color: INK, letterSpacing: "-0.02em", marginBottom: "0.4rem" }}>
+                  Book a free call
+                </h2>
+                <p style={{ ...sans, fontSize: 14, fontWeight: 300, color: INK_MID, marginBottom: "2rem", lineHeight: 1.6 }}>
+                  Fill this in and I&apos;ll come prepared. We&apos;ll talk through your biggest gaps and what infrastructure would actually solve them.
                 </p>
 
-                <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-                  <div className="grid sm:grid-cols-2 gap-6">
-                    <div className="flex flex-col gap-1.5">
-                      <label htmlFor="name" className="text-sm font-semibold text-slate-700">
-                        Your name <span className="text-red-500">*</span>
+                <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.25rem" }}>
+                    <div>
+                      <label htmlFor="name" style={labelStyle}>
+                        Your name <span style={{ color: "#c1440e" }}>*</span>
                       </label>
                       <input
                         id="name"
@@ -90,12 +172,12 @@ export default function ContactPage() {
                         value={form.name}
                         onChange={handleChange}
                         placeholder="Sean Mulligan"
-                        className="border border-slate-200 rounded-lg px-4 py-3 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                        style={inputStyle}
                       />
                     </div>
-                    <div className="flex flex-col gap-1.5">
-                      <label htmlFor="business" className="text-sm font-semibold text-slate-700">
-                        Business name <span className="text-red-500">*</span>
+                    <div>
+                      <label htmlFor="business" style={labelStyle}>
+                        Agency name <span style={{ color: "#c1440e" }}>*</span>
                       </label>
                       <input
                         id="business"
@@ -105,15 +187,15 @@ export default function ContactPage() {
                         value={form.business}
                         onChange={handleChange}
                         placeholder="Your Agency Ltd"
-                        className="border border-slate-200 rounded-lg px-4 py-3 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                        style={inputStyle}
                       />
                     </div>
                   </div>
 
-                  <div className="grid sm:grid-cols-2 gap-6">
-                    <div className="flex flex-col gap-1.5">
-                      <label htmlFor="email" className="text-sm font-semibold text-slate-700">
-                        Email address <span className="text-red-500">*</span>
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.25rem" }}>
+                    <div>
+                      <label htmlFor="email" style={labelStyle}>
+                        Email address <span style={{ color: "#c1440e" }}>*</span>
                       </label>
                       <input
                         id="email"
@@ -123,12 +205,13 @@ export default function ContactPage() {
                         value={form.email}
                         onChange={handleChange}
                         placeholder="sean@youragency.ie"
-                        className="border border-slate-200 rounded-lg px-4 py-3 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                        style={inputStyle}
                       />
                     </div>
-                    <div className="flex flex-col gap-1.5">
-                      <label htmlFor="phone" className="text-sm font-semibold text-slate-700">
-                        Phone <span className="text-slate-400 font-normal">(optional)</span>
+                    <div>
+                      <label htmlFor="phone" style={labelStyle}>
+                        Phone{" "}
+                        <span style={{ ...sans, fontWeight: 400, color: INK_FAINT }}>(optional)</span>
                       </label>
                       <input
                         id="phone"
@@ -137,14 +220,14 @@ export default function ContactPage() {
                         value={form.phone}
                         onChange={handleChange}
                         placeholder="+353 87 000 0000"
-                        className="border border-slate-200 rounded-lg px-4 py-3 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                        style={inputStyle}
                       />
                     </div>
                   </div>
 
-                  <div className="flex flex-col gap-1.5">
-                    <label htmlFor="challenge" className="text-sm font-semibold text-slate-700">
-                      What's your biggest growth challenge right now? <span className="text-red-500">*</span>
+                  <div>
+                    <label htmlFor="challenge" style={labelStyle}>
+                      What&apos;s your biggest growth challenge right now? <span style={{ color: "#c1440e" }}>*</span>
                     </label>
                     <textarea
                       id="challenge"
@@ -154,23 +237,30 @@ export default function ContactPage() {
                       value={form.challenge}
                       onChange={handleChange}
                       placeholder="Tell us what's slowing your growth, what you're trying to solve, or where you feel like you're leaving money on the table..."
-                      className="border border-slate-200 rounded-lg px-4 py-3 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition resize-none"
+                      style={{ ...inputStyle, resize: "none" }}
                     />
                   </div>
 
-                  <button
-                    type="submit"
-                    disabled={sending}
-                    className="bg-blue-600 hover:bg-blue-700 disabled:opacity-60 disabled:cursor-not-allowed text-white font-semibold px-8 py-4 rounded-xl text-base transition-colors w-full sm:w-auto"
-                  >
-                    {sending ? "Sending…" : "Send message"}
-                  </button>
+                  <div>
+                    <button
+                      type="submit"
+                      disabled={sending}
+                      className="btn-green"
+                      style={{
+                        opacity: sending ? 0.6 : 1,
+                        cursor: sending ? "not-allowed" : "pointer",
+                        border: "none",
+                      }}
+                    >
+                      {sending ? "Sending…" : "Send message"}
+                    </button>
+                  </div>
 
                   {error && (
-                    <p className="text-red-500 text-sm">{error}</p>
+                    <p style={{ ...sans, fontSize: 13, color: "#c1440e" }}>{error}</p>
                   )}
 
-                  <p className="text-slate-400 text-sm">
+                  <p style={{ ...sans, fontSize: 12, color: INK_FAINT, lineHeight: 1.6 }}>
                     I respond to every message within 24 hours. Your details are never shared with third parties.
                   </p>
                 </form>
@@ -180,13 +270,22 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Reassurance strip */}
-      <section className="bg-white py-16 px-6 border-t border-slate-100">
-        <div className="max-w-4xl mx-auto grid sm:grid-cols-3 gap-8 text-center">
+      {/* ── REASSURANCE STRIP ── */}
+      <section style={{ background: "white", padding: "4rem", borderBottom: `1px solid ${BORDER}` }}>
+        <div
+          style={{
+            maxWidth: 860,
+            margin: "0 auto",
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: "3rem",
+            textAlign: "center",
+          }}
+        >
           {[
             {
               icon: (
-                <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 stroke-blue-600">
+                <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" style={{ width: 22, height: 22, stroke: GREEN }}>
                   <circle cx="12" cy="12" r="9" />
                   <polyline points="12 7 12 12 15 15" />
                 </svg>
@@ -196,7 +295,7 @@ export default function ContactPage() {
             },
             {
               icon: (
-                <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 stroke-blue-600">
+                <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" style={{ width: 22, height: 22, stroke: GREEN }}>
                   <path d="M17 8h2a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2v3l-4-3H9a2 2 0 0 1-2-2v-1" />
                   <path d="M3 6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H8l-4 3V6z" />
                 </svg>
@@ -206,7 +305,7 @@ export default function ContactPage() {
             },
             {
               icon: (
-                <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 stroke-blue-600">
+                <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" style={{ width: 22, height: 22, stroke: GREEN }}>
                   <circle cx="12" cy="12" r="9" />
                   <path d="M12 3a14.5 14.5 0 0 1 0 18M3 12h18" />
                 </svg>
@@ -216,12 +315,20 @@ export default function ContactPage() {
             },
           ].map((item, i) => (
             <AnimateIn key={item.title} delay={i * 100} direction="up">
-              <div className="flex flex-col items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center">
+              <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.75rem" }}>
+                <div
+                  style={{
+                    width: 48, height: 48,
+                    borderRadius: "50%",
+                    background: GREEN_LIGHT,
+                    border: `1px solid ${GREEN_BORDER}`,
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                  }}
+                >
                   {item.icon}
                 </div>
-                <h3 className="font-bold text-slate-900">{item.title}</h3>
-                <p className="text-slate-500 text-sm">{item.desc}</p>
+                <div style={{ ...display, fontSize: 14, fontWeight: 700, color: INK }}>{item.title}</div>
+                <p style={{ ...sans, fontSize: 13, fontWeight: 300, color: INK_MID, lineHeight: 1.6 }}>{item.desc}</p>
               </div>
             </AnimateIn>
           ))}
