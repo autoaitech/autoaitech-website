@@ -14,13 +14,6 @@ const INK_MID    = "#6b6a67";
 const INK_FAINT  = "#a09e9b";
 const BORDER     = "#e2e1de";
 const RED        = "#c1440e";
-const DARK_BG    = "#0d1117";
-const DARK_BORDER = "#21262d";
-const DARK_SURFACE = "#161b22";
-const DARK_TEXT  = "#cdd9e5";
-const DARK_MID   = "#6e7681";
-const DARK_FAINT = "#484f58";
-const DARK_GREEN = "#3fb950";
 
 /* ── Data ── */
 const liveSystems = [
@@ -181,64 +174,100 @@ export default function HomePage() {
 
         </div>
 
-        {/* Right — dark live panel */}
+        {/* Right — manifesto panel */}
         <div
-          className="animate-hero-r flex flex-col"
-          style={{ background: DARK_BG, padding: "2rem" }}
+          className="animate-hero-r flex flex-col justify-between"
+          style={{ background: "#ffffff", padding: "2.5rem 2.5rem 2rem", borderLeft: `1px solid ${BORDER}` }}
         >
-          {/* Panel header */}
-          <div className="flex items-center justify-between mb-6">
-            <span style={{ ...mono, fontSize: 10, color: DARK_MID, textTransform: "uppercase", letterSpacing: "0.08em" }}>
-              Infrastructure / Live status
+          {/* Label */}
+          <div>
+            <span style={{ ...mono, fontSize: 9.5, color: "#a8a29e", textTransform: "uppercase", letterSpacing: "0.1em" }}>
+              The usual approach
             </span>
-            <span className="flex items-center gap-1.5" style={{ ...mono, fontSize: 10, color: DARK_GREEN }}>
-              <span className="status-pulse" style={{ width: 6, height: 6, borderRadius: "50%", background: DARK_GREEN, display: "block" }} />
-              All systems operational
-            </span>
-          </div>
 
-          {/* System rows */}
-          <div className="flex flex-col gap-0.5 flex-1">
-            {liveSystems.map((s, i) => (
-              <div
-                key={s.name}
-                className={`flex items-center justify-between row-in-${i + 1}`}
+            {/* Struck-through wrong answers */}
+            <div className="flex flex-col mt-4" style={{ gap: "0.85rem" }}>
+              {[
+                "Hire another person",
+                "Buy another tool",
+                "Find a freelancer",
+                "Systemise manually",
+              ].map((line, i) => (
+                <div key={i} className="flex items-center gap-3">
+                  <span
+                    style={{
+                      width: 18,
+                      height: 18,
+                      borderRadius: "50%",
+                      border: "1.5px solid #d6d3d1",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      flexShrink: 0,
+                    }}
+                  >
+                    <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+                      <path d="M1.5 1.5l5 5M6.5 1.5l-5 5" stroke="#d6d3d1" strokeWidth="1.5" strokeLinecap="round" />
+                    </svg>
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: "'Bricolage Grotesque', sans-serif",
+                      fontSize: 20,
+                      fontWeight: 500,
+                      color: "#c7c3be",
+                      textDecoration: "line-through",
+                      textDecorationColor: "#c7c3be",
+                      lineHeight: 1.2,
+                    }}
+                  >
+                    {line}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* Divider */}
+            <div style={{ height: 1, background: "#e7e5e4", margin: "1.5rem 0" }} />
+
+            {/* The answer */}
+            <div className="flex items-center gap-3">
+              <span
                 style={{
-                  padding: "10px 14px",
-                  borderRadius: 8,
-                  background: DARK_SURFACE,
-                  border: `1px solid ${DARK_BORDER}`,
+                  width: 18,
+                  height: 18,
+                  borderRadius: "50%",
+                  background: GREEN,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexShrink: 0,
                 }}
               >
-                <div className="flex items-center gap-2.5">
-                  <span
-                    className="status-pulse"
-                    style={{ width: 7, height: 7, borderRadius: "50%", background: DARK_GREEN, flexShrink: 0, display: "block" }}
-                  />
-                  <div>
-                    <div style={{ ...mono, fontSize: 11.5, color: DARK_TEXT }}>{s.name}</div>
-                    <div style={{ ...mono, fontSize: 9.5, color: DARK_MID, textTransform: "uppercase", letterSpacing: "0.05em" }}>{s.tag}</div>
-                  </div>
-                </div>
-                <div className="text-right">
-                  <div style={{ ...mono, fontSize: 10.5, color: DARK_GREEN }}>{s.metric}</div>
-                  <div style={{ ...mono, fontSize: 9, color: DARK_FAINT }}>{s.metricLabel}</div>
-                </div>
-              </div>
-            ))}
+                <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+                  <path d="M1.5 4l2 2 3-3.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
+              <span
+                style={{
+                  fontFamily: "'Bricolage Grotesque', sans-serif",
+                  fontSize: 22,
+                  fontWeight: 700,
+                  color: "#111110",
+                  lineHeight: 1.2,
+                }}
+              >
+                Build the infrastructure.
+              </span>
+            </div>
           </div>
 
-          {/* Panel footer */}
-          <div
-            className="flex items-center justify-between mt-4 pt-4"
-            style={{ borderTop: `1px solid ${DARK_BORDER}` }}
-          >
-            <span style={{ ...mono, fontSize: 9.5, color: DARK_FAINT }}>
-              Uptime this month: <strong style={{ color: DARK_GREEN }}>99.97%</strong>
-            </span>
-            <span style={{ ...mono, fontSize: 10, color: DARK_MID, textTransform: "uppercase", letterSpacing: "0.06em" }}>
-              Client OS
-            </span>
+          {/* Footer note */}
+          <div style={{ marginTop: "2rem" }}>
+            <p style={{ ...mono, fontSize: 10, color: "#a8a29e", lineHeight: 1.7 }}>
+              One build. Runs continuously.<br />
+              Compounds across every client.
+            </p>
           </div>
         </div>
       </section>
