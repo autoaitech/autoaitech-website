@@ -1,5 +1,6 @@
 import Link from "next/link";
 import AnimateIn from "@/components/AnimateIn";
+import HeroPanel from "@/components/HeroPanel";
 
 /* ── Design tokens ── */
 const display: React.CSSProperties = { fontFamily: "var(--font-display)" };
@@ -174,101 +175,9 @@ export default function HomePage() {
 
         </div>
 
-        {/* Right — manifesto panel */}
-        <div
-          className="animate-hero-r flex flex-col justify-between"
-          style={{ background: "#ffffff", padding: "2.5rem 2.5rem 2rem", borderLeft: `1px solid ${BORDER}` }}
-        >
-          {/* Label */}
-          <div>
-            <span style={{ ...mono, fontSize: 9.5, color: "#a8a29e", textTransform: "uppercase", letterSpacing: "0.1em" }}>
-              The usual approach
-            </span>
-
-            {/* Struck-through wrong answers */}
-            <div className="flex flex-col mt-4" style={{ gap: "0.85rem" }}>
-              {[
-                "Hire another person",
-                "Buy another tool",
-                "Find a freelancer",
-                "Systemise manually",
-              ].map((line, i) => (
-                <div key={i} className="flex items-center gap-3">
-                  <span
-                    style={{
-                      width: 18,
-                      height: 18,
-                      borderRadius: "50%",
-                      border: "1.5px solid #d6d3d1",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      flexShrink: 0,
-                    }}
-                  >
-                    <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
-                      <path d="M1.5 1.5l5 5M6.5 1.5l-5 5" stroke="#d6d3d1" strokeWidth="1.5" strokeLinecap="round" />
-                    </svg>
-                  </span>
-                  <span
-                    style={{
-                      fontFamily: "'Bricolage Grotesque', sans-serif",
-                      fontSize: 20,
-                      fontWeight: 500,
-                      color: "#c7c3be",
-                      textDecoration: "line-through",
-                      textDecorationColor: "#c7c3be",
-                      lineHeight: 1.2,
-                    }}
-                  >
-                    {line}
-                  </span>
-                </div>
-              ))}
-            </div>
-
-            {/* Divider */}
-            <div style={{ height: 1, background: "#e7e5e4", margin: "1.5rem 0" }} />
-
-            {/* The answer */}
-            <div className="flex items-center gap-3">
-              <span
-                style={{
-                  width: 18,
-                  height: 18,
-                  borderRadius: "50%",
-                  background: GREEN,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexShrink: 0,
-                }}
-              >
-                <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
-                  <path d="M1.5 4l2 2 3-3.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </span>
-              <span
-                style={{
-                  fontFamily: "'Bricolage Grotesque', sans-serif",
-                  fontSize: 22,
-                  fontWeight: 700,
-                  color: "#111110",
-                  lineHeight: 1.2,
-                }}
-              >
-                Build the infrastructure.
-              </span>
-            </div>
-          </div>
-
-          {/* Footer note */}
-          <div style={{ marginTop: "2rem" }}>
-            <p style={{ ...mono, fontSize: 10, color: "#a8a29e", lineHeight: 1.7 }}>
-              One build. Runs continuously.<br />
-              Compounds across every client.
-            </p>
-          </div>
+        {/* Right — always-on clock panel */}
+        <div className="animate-hero-r" style={{ display: "flex", flexDirection: "column" }}>
+          <HeroPanel />
         </div>
       </section>
 
