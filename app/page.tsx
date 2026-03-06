@@ -1,421 +1,546 @@
 import Link from "next/link";
 import AnimateIn from "@/components/AnimateIn";
 
-const systems = [
+/* ── Design tokens ── */
+const display: React.CSSProperties = { fontFamily: "var(--font-display)" };
+const mono: React.CSSProperties    = { fontFamily: "var(--font-mono)" };
+const sans: React.CSSProperties    = { fontFamily: "var(--font-sans)" };
+
+const GREEN      = "#059669";
+const GREEN_LIGHT = "#d1fae5";
+const GREEN_BORDER = "#a7f3d0";
+const INK        = "#111110";
+const INK_MID    = "#6b6a67";
+const INK_FAINT  = "#a09e9b";
+const BORDER     = "#e2e1de";
+const RED        = "#c1440e";
+const DARK_BG    = "#0d1117";
+const DARK_BORDER = "#21262d";
+const DARK_SURFACE = "#161b22";
+const DARK_TEXT  = "#cdd9e5";
+const DARK_MID   = "#6e7681";
+const DARK_FAINT = "#484f58";
+const DARK_GREEN = "#3fb950";
+
+/* ── Data ── */
+const liveSystems = [
+  { name: "Lead Response Engine", tag: "follow-up",  metric: "Active",       metricLabel: "running" },
+  { name: "Proposal Engine",      tag: "sales",       metric: "Active",       metricLabel: "running" },
+  { name: "Onboarding System",    tag: "retention",   metric: "3 days saved", metricLabel: "per new client" },
+  { name: "Reporting System",     tag: "visibility",  metric: "Auto",         metricLabel: "monthly reports" },
+  { name: "Review Engine",        tag: "reputation",  metric: "+2.3×",        metricLabel: "review velocity" },
+  { name: "Reactivation Engine",  tag: "growth",      metric: "Active",       metricLabel: "running" },
+];
+
+const systemCards = [
   {
-    name: "AI Lead Engine",
-    tag: "Lead generation",
-    description: "Continuously identifies, qualifies, and delivers high-intent leads into your pipeline.",
-    outcome: "3–5× more qualified pipeline in 60 days",
+    name: "Lead Response Engine",
+    desc: "Responds to every inbound lead fast. Personalised, qualified, and booked — before your competitors have opened their email.",
+    metric: "↗ More leads converted",
   },
   {
-    name: "Retention Reactor AI",
-    tag: "Client retention",
-    description: "Detects at-risk clients before they leave and automatically re-engages dormant relationships.",
-    outcome: "Catch churn signals weeks before clients go cold",
+    name: "Proposal Engine",
+    desc: "Generates fully personalised proposals from a call transcript. Branded, scoped, and ready to send in under two hours instead of two days.",
+    metric: "↗ 70% less time on proposals",
   },
   {
-    name: "Smart Onboarding Engine",
-    tag: "Onboarding",
-    description: "Automates every step of client onboarding — from contract to delivery — so nothing slips.",
-    outcome: "Zero missed steps. Faster time-to-value.",
+    name: "Onboarding System",
+    desc: "Structured client onboarding — strategy docs, approvals, data collection — without chasing emails for three weeks.",
+    metric: "↗ 3 days saved per client",
   },
   {
-    name: "ROI Intelligence Hub",
-    tag: "ROI visibility",
-    description: "Pulls performance data from every connected system into one view. You always know what's working.",
-    outcome: "Live ROI per system, per week — automatically",
+    name: "Reporting System",
+    desc: "Automated monthly performance reports built from your data. Clients see ROI clearly. No more last-minute scrambles before calls.",
+    metric: "↗ Clients stay longer",
   },
   {
-    name: "Creative Intelligence Engine",
-    tag: "Creative ops",
-    description: "Monitors ad performance, spots what's working, and automates testing of new variations.",
-    outcome: "Lower CPAs. Higher ROAS. Week over week.",
+    name: "Review Engine",
+    desc: "Systematically captures 5-star reviews at the moment your clients are happiest. Turns good work into visible, searchable proof.",
+    metric: "↗ 2.3× more reviews per month",
   },
   {
-    name: "Campaign Monitoring Agents",
-    tag: "Campaign intelligence",
-    description: "Watches your live ad accounts around the clock and flags problems before they cost you.",
-    outcome: "Catch campaign issues hours before they're expensive",
+    name: "Reactivation Engine",
+    desc: "Re-engages your dormant leads and past clients automatically. Consistent, human-feeling sequences with real context — not spam blasts.",
+    metric: "↗ Strong win-back rates",
   },
 ];
 
-const systemIcons = [
-  // AI Lead Engine — trending up
-  <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-[22px] h-[22px] stroke-[#60a5fa]" key="lead">
-    <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
-    <polyline points="16 7 22 7 22 13"/>
-  </svg>,
-  // Retention Reactor — refresh
-  <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-[22px] h-[22px] stroke-[#60a5fa]" key="retention">
-    <polyline points="1 4 1 10 7 10"/>
-    <polyline points="23 20 23 14 17 14"/>
-    <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/>
-  </svg>,
-  // Smart Onboarding — lightning bolt
-  <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-[22px] h-[22px] stroke-[#60a5fa]" key="onboarding">
-    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-  </svg>,
-  // ROI Hub — bar chart
-  <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-[22px] h-[22px] stroke-[#60a5fa]" key="roi">
-    <line x1="18" y1="20" x2="18" y2="10"/>
-    <line x1="12" y1="20" x2="12" y2="4"/>
-    <line x1="6" y1="20" x2="6" y2="14"/>
-    <line x1="2" y1="20" x2="22" y2="20"/>
-  </svg>,
-  // Creative Intelligence — star
-  <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-[22px] h-[22px] stroke-[#60a5fa]" key="creative">
-    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-  </svg>,
-  // Campaign Monitoring — eye
-  <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-[22px] h-[22px] stroke-[#60a5fa]" key="campaign">
-    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-    <circle cx="12" cy="12" r="3"/>
-  </svg>,
+const compareRows = [
+  { feature: "Systems connect to each other",     freelance: false, saas: false },
+  { feature: "Ongoing monitoring & maintenance",   freelance: false, saas: false },
+  { feature: "ROI visibility dashboard",           freelance: false, saas: "sometimes" },
+  { feature: "Built for your agency specifically", freelance: true,  saas: false },
+  { feature: "No per-seat pricing",                freelance: true,  saas: false },
+  { feature: "Your full infrastructure from one provider", freelance: false, saas: false },
 ];
 
 const steps = [
-  { number: "01", title: "Connect your tools", description: "We integrate with your existing stack — CRM, email, ads, calendar, payments. No ripping and replacing." },
-  { number: "02", title: "Systems activate", description: "Your AI systems go live immediately — finding leads, retaining clients, monitoring campaigns around the clock." },
-  { number: "03", title: "ROI compounds", description: "Every system feeds into the next. Your infrastructure grows more powerful with every passing week." },
+  {
+    n: "1",
+    title: "We scope your setup",
+    body: "One call to understand your agency, your clients, and where the biggest gaps are. No 40-page questionnaires. We figure this out together.",
+  },
+  {
+    n: "2",
+    title: "We build and connect",
+    body: "Your systems are built, integrated with your existing tools, and tested. You get access to the Client OS so you can see exactly what's running.",
+  },
+  {
+    n: "3",
+    title: "They run. You grow.",
+    body: "From month one, your systems are live. We monitor, maintain, and improve them on a monthly retainer. You pay for outcomes, not hours.",
+  },
 ];
 
-const stepIcons = [
-  <svg key="connect" viewBox="0 0 24 24" fill="none" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-[18px] h-[18px] stroke-blue-600">
-    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
-    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
-  </svg>,
-  <svg key="activate" viewBox="0 0 24 24" fill="none" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-[18px] h-[18px] stroke-blue-600">
-    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-  </svg>,
-  <svg key="roi" viewBox="0 0 24 24" fill="none" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-[18px] h-[18px] stroke-blue-600">
-    <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
-    <polyline points="16 7 22 7 22 13"/>
-  </svg>,
-];
+/* ── Sub-components ── */
+function SectionLabel({ text }: { text: string }) {
+  return (
+    <div className="flex items-center gap-2.5 mb-4">
+      <div style={{ width: 24, height: 1, background: GREEN }} />
+      <span style={{ ...mono, fontSize: 10, fontWeight: 500, color: GREEN, textTransform: "uppercase", letterSpacing: "0.1em" }}>
+        {text}
+      </span>
+    </div>
+  );
+}
 
-const stats = [
-  { number: "35+", label: "Integrations", sub: "CRM, email, ads, payments & more" },
-  { number: "6", label: "AI Systems", sub: "Running 24/7 inside your business" },
-  { number: "24/7", label: "Always Running", sub: "No holidays, no sick days, no downtime" },
-];
+function Check() {
+  return <span style={{ color: GREEN, fontSize: 16 }}>✓</span>;
+}
+function Cross() {
+  return <span style={{ color: "#c8c5c0", fontSize: 16 }}>—</span>;
+}
 
+/* ── Page ── */
 export default function HomePage() {
   return (
     <>
       {/* ── HERO ── */}
-      <section className="relative bg-[#0a0a0f] overflow-hidden noise-overlay pt-28 pb-24 px-6">
-        {/* Grid */}
-        <div className="absolute inset-0 hero-grid" />
-
-        {/* Glow orbs */}
-        <div className="absolute -top-32 left-1/3 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute top-1/2 right-0 w-[400px] h-[400px] bg-cyan-500/8 rounded-full blur-[100px] pointer-events-none" />
-
-        <div className="relative max-w-4xl mx-auto text-center flex flex-col items-center gap-6">
-          <div className="inline-flex items-center gap-2 bg-blue-600/10 border border-blue-600/20 rounded-full px-4 py-1.5 w-fit mx-auto">
-            <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
-            <span className="text-blue-400 text-sm font-medium">Founder-led AI infrastructure for Irish &amp; UK agencies</span>
+      <section
+        className="mt-[56px] border-b"
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 460px",
+          minHeight: "calc(100vh - 56px)",
+          borderColor: BORDER,
+        }}
+      >
+        {/* Left */}
+        <div
+          className="flex flex-col justify-center border-r animate-hero-1"
+          style={{ padding: "5rem 4rem 4rem", borderColor: BORDER }}
+        >
+          {/* Badge */}
+          <div
+            className="inline-flex items-center gap-2 mb-10 w-fit"
+            style={{
+              background: GREEN_LIGHT,
+              border: `1px solid ${GREEN_BORDER}`,
+              borderRadius: 100,
+              padding: "5px 12px 5px 8px",
+            }}
+          >
+            <span
+              className="pulse-green"
+              style={{ width: 7, height: 7, borderRadius: "50%", background: GREEN, flexShrink: 0, display: "block" }}
+            />
+            <span style={{ ...mono, fontSize: 10.5, fontWeight: 500, color: GREEN, letterSpacing: "0.06em", textTransform: "uppercase" }}>
+              AI infrastructure — accepting agencies
+            </span>
           </div>
 
-          <h1 className="text-6xl sm:text-7xl font-bold text-white leading-[1.08] tracking-tight">
-            AI systems that{" "}
-            <span className="gradient-text">compound</span>
-            <br />
-            your growth
+          {/* Headline */}
+          <h1
+            className="animate-hero-2 mb-7"
+            style={{ ...display, fontSize: "clamp(2.6rem, 4.5vw, 3.8rem)", fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.02em", color: INK }}
+          >
+            Your agency runs on<br />
+            <em style={{ color: RED, fontStyle: "italic", fontWeight: 600 }}>manual labour.</em><br />
+            Ours doesn&apos;t.
           </h1>
 
-          <p className="text-slate-400 text-lg leading-relaxed max-w-xl mx-auto">
-            AutoAITech builds and runs AI infrastructure inside your business — finding leads, retaining clients,
-            and monitoring campaigns continuously. I build it. I run it. You own the results.
+          {/* Body */}
+          <p
+            className="animate-hero-3 mb-10"
+            style={{ ...sans, fontSize: 17, fontWeight: 300, lineHeight: 1.65, color: INK_MID, maxWidth: 500 }}
+          >
+            AutoAITech builds and runs AI infrastructure for Irish and UK agencies — lead follow-up,
+            proposals, reporting, and more — running 24/7 so your team can focus on the work that
+            actually matters.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link href="/contact" className="btn-glow bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-xl text-base transition-colors">
-              Let's Talk
+          {/* CTAs */}
+          <div className="animate-hero-4 flex items-center gap-4 mb-14">
+            <Link href="/contact" className="btn-green">
+              Book a free call
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M3 7h8M8 4l3 3-3 3" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
             </Link>
-            <Link href="/systems" className="border border-white/10 hover:border-white/20 text-slate-300 hover:text-white font-semibold px-8 py-4 rounded-xl text-base transition-colors">
-              See the Systems →
+            <Link
+              href="/systems"
+              className="no-underline flex items-center gap-1.5 transition-colors"
+              style={{ ...sans, fontSize: 14, color: INK_MID }}
+            >
+              See the systems
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
             </Link>
+          </div>
+
+          {/* Stats */}
+          <div
+            className="animate-hero-5 flex gap-10 pt-8"
+            style={{ borderTop: `1px solid ${BORDER}` }}
+          >
+            {[
+              { val: "2–3", unit: "wk",  label: "setup time" },
+              { val: "24",  unit: "/7",  label: "systems run continuously" },
+              { val: "99",  unit: "%",   label: "uptime target" },
+            ].map((s) => (
+              <div key={s.label}>
+                <div style={{ ...display, fontSize: "2rem", fontWeight: 700, color: INK, lineHeight: 1, marginBottom: 4 }}>
+                  {s.val}<span style={{ color: GREEN }}>{s.unit}</span>
+                </div>
+                <div style={{ ...mono, fontSize: 10, color: INK_FAINT, textTransform: "uppercase", letterSpacing: "0.07em" }}>
+                  {s.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Right — dark live panel */}
+        <div
+          className="animate-hero-r flex flex-col"
+          style={{ background: DARK_BG, padding: "2rem" }}
+        >
+          {/* Panel header */}
+          <div className="flex items-center justify-between mb-6">
+            <span style={{ ...mono, fontSize: 10, color: DARK_MID, textTransform: "uppercase", letterSpacing: "0.08em" }}>
+              Infrastructure / Live status
+            </span>
+            <span className="flex items-center gap-1.5" style={{ ...mono, fontSize: 10, color: DARK_GREEN }}>
+              <span className="status-pulse" style={{ width: 6, height: 6, borderRadius: "50%", background: DARK_GREEN, display: "block" }} />
+              All systems operational
+            </span>
+          </div>
+
+          {/* System rows */}
+          <div className="flex flex-col gap-0.5 flex-1">
+            {liveSystems.map((s, i) => (
+              <div
+                key={s.name}
+                className={`flex items-center justify-between row-in-${i + 1}`}
+                style={{
+                  padding: "10px 14px",
+                  borderRadius: 8,
+                  background: DARK_SURFACE,
+                  border: `1px solid ${DARK_BORDER}`,
+                }}
+              >
+                <div className="flex items-center gap-2.5">
+                  <span
+                    className="status-pulse"
+                    style={{ width: 7, height: 7, borderRadius: "50%", background: DARK_GREEN, flexShrink: 0, display: "block" }}
+                  />
+                  <div>
+                    <div style={{ ...mono, fontSize: 11.5, color: DARK_TEXT }}>{s.name}</div>
+                    <div style={{ ...mono, fontSize: 9.5, color: DARK_MID, textTransform: "uppercase", letterSpacing: "0.05em" }}>{s.tag}</div>
+                  </div>
+                </div>
+                <div className="text-right">
+                  <div style={{ ...mono, fontSize: 10.5, color: DARK_GREEN }}>{s.metric}</div>
+                  <div style={{ ...mono, fontSize: 9, color: DARK_FAINT }}>{s.metricLabel}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Panel footer */}
+          <div
+            className="flex items-center justify-between mt-4 pt-4"
+            style={{ borderTop: `1px solid ${DARK_BORDER}` }}
+          >
+            <span style={{ ...mono, fontSize: 9.5, color: DARK_FAINT }}>
+              Uptime this month: <strong style={{ color: DARK_GREEN }}>99.97%</strong>
+            </span>
+            <span style={{ ...mono, fontSize: 10, color: DARK_MID, textTransform: "uppercase", letterSpacing: "0.06em" }}>
+              Client OS
+            </span>
           </div>
         </div>
       </section>
 
-      {/* ── STATS BAR ── */}
-      <section className="bg-[#0d0d12] border-y border-white/5 py-8 px-6">
-        <div className="max-w-4xl mx-auto grid grid-cols-3 gap-6 text-center">
-          {stats.map((s) => (
-            <div key={s.label}>
-              <p className="text-3xl sm:text-4xl font-bold font-mono text-white">{s.number}</p>
-              <p className="text-slate-500 text-xs font-semibold uppercase tracking-widest mt-1">{s.label}</p>
+      {/* ── TICKER ── */}
+      <div style={{ background: GREEN, overflow: "hidden", padding: "10px 0", borderBottom: `1px solid ${BORDER}` }}>
+        <div className="ticker-track">
+          {[...liveSystems, ...liveSystems].map((s, i) => (
+            <div key={i} className="flex items-center flex-shrink-0">
+              <span style={{ ...mono, fontSize: 10.5, fontWeight: 500, color: "white", textTransform: "uppercase", letterSpacing: "0.08em", padding: "0 2rem" }}>
+                {s.name}
+              </span>
+              <span style={{ color: "rgba(255,255,255,0.4)", fontSize: 10 }}>·</span>
             </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ── SYSTEMS ── */}
+      <section style={{ padding: "6rem 4rem" }}>
+        <AnimateIn>
+          <SectionLabel text="The infrastructure" />
+          <h2 style={{ ...display, fontSize: "clamp(1.8rem, 3vw, 2.6rem)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.15, color: INK, maxWidth: 600, marginBottom: "1rem" }}>
+            The work your agency keeps doing manually.
+          </h2>
+          <p style={{ ...sans, fontSize: 16, fontWeight: 300, color: INK_MID, maxWidth: 540, lineHeight: 1.65, marginBottom: "3.5rem" }}>
+            We identify your highest-impact gaps and build the infrastructure to close them. These are
+            the systems we build most often — each one solving a real problem agencies face every week.
+          </p>
+        </AnimateIn>
+
+        {/* 3-col grid */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: 1,
+            background: BORDER,
+            border: `1px solid ${BORDER}`,
+            borderRadius: 12,
+            overflow: "hidden",
+          }}
+        >
+          {systemCards.map((c, i) => (
+            <AnimateIn key={c.name} delay={i * 50} direction="up">
+              <div className="sys-card-new" style={{ padding: "2rem", height: "100%" }}>
+                <div style={{ ...display, fontSize: "1.05rem", fontWeight: 700, color: INK, marginBottom: "0.6rem", letterSpacing: "-0.01em" }}>
+                  {c.name}
+                </div>
+                <p style={{ ...sans, fontSize: 13.5, fontWeight: 300, color: INK_MID, lineHeight: 1.6, marginBottom: "1.25rem" }}>
+                  {c.desc}
+                </p>
+                <div style={{ ...mono, fontSize: 11, color: GREEN, fontWeight: 500 }}>
+                  {c.metric}
+                </div>
+              </div>
+            </AnimateIn>
           ))}
         </div>
       </section>
 
-      {/* ── SYSTEMS OVERVIEW ── */}
-      <section className="bg-white py-24 px-6">
-        <div className="max-w-6xl mx-auto">
-          <AnimateIn className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#0a0a0a] tracking-tight mb-4">Six systems. One infrastructure.</h2>
-            <p className="text-[#6b7280] text-lg max-w-xl mx-auto">Each system runs continuously, generates measurable output, and connects to the others.</p>
-          </AnimateIn>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {systems.map((system, i) => (
-              <AnimateIn key={system.name} delay={i * 80} direction="up">
-                <div className="bg-[#0c0c14] rounded-xl p-7 system-card h-full cursor-default flex flex-col">
-                  <div
-                    className="w-[42px] h-[42px] rounded-[10px] flex items-center justify-center mb-5 flex-shrink-0"
-                    style={{ background: "linear-gradient(135deg, rgba(59,130,246,0.25), rgba(99,102,241,0.15))", border: "1px solid rgba(99,102,241,0.3)" }}
-                  >
-                    {systemIcons[i]}
-                  </div>
-                  <h3 className="text-[16px] font-bold text-[#f1f5f9] mb-2 tracking-[-0.01em]">{system.name}</h3>
-                  <p className="text-sm text-[#64748b] leading-[1.65]">{system.description}</p>
-                  <div className="mt-auto pt-5 border-t border-white/5 flex items-center gap-2">
-                    <span className="text-blue-500 text-xs">→</span>
-                    <span className="text-xs text-blue-400/80 font-medium">{system.outcome}</span>
-                  </div>
-                </div>
-              </AnimateIn>
-            ))}
-          </div>
-          <AnimateIn className="text-center mt-12" delay={200}>
-            <Link href="/systems" className="text-sm text-[#6b7280] border-b border-[#e5e7eb] pb-0.5 hover:text-[#111] hover:border-[#111] transition-colors duration-150">
-              See all systems in detail →
-            </Link>
-          </AnimateIn>
-        </div>
-      </section>
-
-      {/* ── WHY AUTOAITECH ── */}
-      <section className="bg-[#F9FAFB] py-24 px-6">
-        <div className="max-w-4xl mx-auto">
-          <AnimateIn className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#0a0a0a] tracking-tight mb-4">Why AutoAITech</h2>
-            <p className="text-[#6b7280] text-lg max-w-xl mx-auto">Not software you configure. Not a freelancer you manage. Infrastructure that runs.</p>
-          </AnimateIn>
-          <AnimateIn direction="up" delay={100}>
-            <div className="overflow-x-auto">
-              <div className="border border-slate-200 rounded-2xl overflow-hidden shadow-sm min-w-[560px]">
-                {/* Header */}
-                <div className="grid grid-cols-[1fr_200px_200px]">
-                  <div className="bg-slate-50 border-b border-slate-200 p-4" />
-                  <div className="bg-blue-900 border-b border-blue-800 p-4 flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-blue-400 flex-shrink-0" />
-                    <span className="text-[11px] font-bold tracking-[0.08em] uppercase text-blue-200">AutoAITech</span>
-                  </div>
-                  <div className="bg-slate-50 border-b border-slate-200 border-l border-slate-200 p-4 flex items-center">
-                    <span className="text-[11px] font-bold tracking-[0.08em] uppercase text-slate-400">Traditional Agency</span>
-                  </div>
-                </div>
-                {/* Rows */}
-                {[
-                  { label: "Always running", sub: "Systems operate continuously", aa: "24/7, no downtime", trad: "Office hours only" },
-                  { label: "ROI visibility", sub: "Know what's actually working", aa: "Live dashboard, every day", trad: "Monthly PDF reports" },
-                  { label: "Scales with you", sub: "Works across all clients", aa: "Infrastructure model", trad: "Retainer per client" },
-                  { label: "Connected systems", sub: "Everything feeds the growth loop", aa: "6 integrated systems", trad: "Disconnected tools" },
-                  { label: "Lead generation", sub: "Continuous pipeline", aa: "AI-driven, always on", trad: "Ad spend dependent" },
-                ].map((row, i, arr) => (
-                  <div key={row.label} className={`grid grid-cols-[1fr_200px_200px]${i < arr.length - 1 ? " border-b border-slate-100" : ""}`}>
-                    <div className="p-5">
-                      <p className="text-sm font-semibold text-slate-800">{row.label}</p>
-                      <p className="text-xs text-slate-400 mt-0.5">{row.sub}</p>
-                    </div>
-                    <div className="p-5 bg-blue-50 border-l border-blue-100 flex items-center gap-2">
-                      <span className="text-blue-600 font-bold text-xs flex-shrink-0">✓</span>
-                      <span className="text-xs font-semibold text-blue-800">{row.aa}</span>
-                    </div>
-                    <div className="p-5 border-l border-slate-100 flex items-center gap-2">
-                      <span className="text-slate-300 font-bold text-xs flex-shrink-0">✗</span>
-                      <span className="text-xs text-slate-500">{row.trad}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </AnimateIn>
-        </div>
-      </section>
-
       {/* ── HOW IT WORKS ── */}
-      <section className="bg-[#f8fafc] py-24 px-6">
-        <div className="max-w-5xl mx-auto">
-          <AnimateIn className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#0a0a0a] tracking-tight mb-4">How it works</h2>
-            <p className="text-[#6b7280] text-lg max-w-xl mx-auto">Three steps. Then it runs.</p>
-          </AnimateIn>
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_48px_1fr_48px_1fr] items-start">
-            {steps.flatMap((step, i) => {
-              const card = (
-                <AnimateIn key={step.number} delay={i * 120} direction="up">
-                  <div className="bg-white border border-slate-200 rounded-2xl p-8 relative overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-200 cursor-default">
-                    <div className="text-[80px] font-black text-slate-100 leading-none tracking-tight mb-4 select-none font-mono">{step.number}</div>
-                    <div className="w-10 h-10 rounded-[10px] bg-blue-50 border border-blue-100 flex items-center justify-center mb-4">
-                      {stepIcons[i]}
-                    </div>
-                    <h3 className="text-[18px] font-bold text-[#0f172a] mb-2.5 tracking-tight">{step.title}</h3>
-                    <p className="text-sm text-slate-500 leading-[1.7]">{step.description}</p>
-                  </div>
-                </AnimateIn>
-              );
-              if (i < steps.length - 1) {
-                return [card, (
-                  <div key={`arrow-${i}`} className="hidden md:flex items-center justify-center pt-14 text-slate-300">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-                    </svg>
-                  </div>
-                )];
-              }
-              return [card];
-            })}
+      <section style={{ background: "#fafaf9", borderTop: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}`, padding: "6rem 4rem" }}>
+        <AnimateIn>
+          <SectionLabel text="How it works" />
+          <h2 style={{ ...display, fontSize: "clamp(1.8rem, 3vw, 2.6rem)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.15, color: INK, maxWidth: 600, marginBottom: "3rem" }}>
+            Set up once. Runs forever.
+          </h2>
+        </AnimateIn>
+
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "3rem" }}>
+          {steps.map((s, i) => (
+            <AnimateIn key={s.n} delay={i * 80} direction="up">
+              <div>
+                <div
+                  style={{
+                    width: 26, height: 26,
+                    border: `1px solid ${GREEN}`,
+                    borderRadius: "50%",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    ...mono, fontSize: 11, color: GREEN,
+                    marginBottom: "1rem",
+                  }}
+                >
+                  {s.n}
+                </div>
+                <div style={{ ...display, fontSize: "1.05rem", fontWeight: 700, color: INK, marginBottom: "0.5rem", letterSpacing: "-0.01em" }}>
+                  {s.title}
+                </div>
+                <p style={{ ...sans, fontSize: 14, fontWeight: 300, color: INK_MID, lineHeight: 1.65 }}>
+                  {s.body}
+                </p>
+              </div>
+            </AnimateIn>
+          ))}
+        </div>
+      </section>
+
+      {/* ── COMPARISON ── */}
+      <section style={{ padding: "6rem 4rem", background: "white", borderBottom: `1px solid ${BORDER}` }}>
+        <AnimateIn>
+          <SectionLabel text="Why AutoAITech" />
+          <h2 style={{ ...display, fontSize: "clamp(1.8rem, 3vw, 2.6rem)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.15, color: INK, maxWidth: 600, marginBottom: "1rem" }}>
+            Not another agency tool. Infrastructure.
+          </h2>
+          <p style={{ ...sans, fontSize: 16, fontWeight: 300, color: INK_MID, maxWidth: 540, lineHeight: 1.65, marginBottom: "3rem" }}>
+            The difference between a one-off automation and systems that compound over time.
+          </p>
+        </AnimateIn>
+
+        <AnimateIn direction="up" delay={100}>
+          <div style={{ border: `1px solid ${BORDER}`, borderRadius: 12, overflow: "hidden" }}>
+            <table style={{ width: "100%", borderCollapse: "collapse" }}>
+              <thead>
+                <tr>
+                  <th style={{ width: "40%", padding: "1rem 1.5rem", textAlign: "left", ...mono, fontSize: 10, textTransform: "uppercase", letterSpacing: "0.08em", color: INK_FAINT, background: "#fafaf9", borderBottom: `1px solid ${BORDER}` }}>
+                    Feature
+                  </th>
+                  <th style={{ padding: "1rem 1.5rem", textAlign: "center", ...mono, fontSize: 10, textTransform: "uppercase", letterSpacing: "0.08em", color: INK_FAINT, background: "#fafaf9", borderBottom: `1px solid ${BORDER}` }}>
+                    Freelance dev
+                  </th>
+                  <th style={{ padding: "1rem 1.5rem", textAlign: "center", ...mono, fontSize: 10, textTransform: "uppercase", letterSpacing: "0.08em", color: INK_FAINT, background: "#fafaf9", borderBottom: `1px solid ${BORDER}` }}>
+                    SaaS tools
+                  </th>
+                  <th style={{ padding: "1rem 1.5rem", textAlign: "center", ...mono, fontSize: 10, textTransform: "uppercase", letterSpacing: "0.08em", color: GREEN, background: GREEN_LIGHT, borderBottom: `1px solid ${GREEN_BORDER}` }}>
+                    AutoAITech
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {compareRows.map((row, i) => (
+                  <tr key={row.feature} style={{ borderBottom: i < compareRows.length - 1 ? `1px solid ${BORDER}` : "none" }}>
+                    <td style={{ padding: "1rem 1.5rem", ...sans, fontWeight: 500, fontSize: 13.5, color: INK }}>
+                      {row.feature}
+                    </td>
+                    <td style={{ padding: "1rem 1.5rem", textAlign: "center", ...sans, fontSize: 13, color: INK_MID }}>
+                      {row.freelance === true ? <Check /> : row.freelance === false ? <Cross /> : row.freelance}
+                    </td>
+                    <td style={{ padding: "1rem 1.5rem", textAlign: "center", ...sans, fontSize: 13, color: INK_MID }}>
+                      {row.saas === true ? <Check /> : row.saas === false ? <Cross /> : row.saas}
+                    </td>
+                    <td style={{ padding: "1rem 1.5rem", textAlign: "center" }}>
+                      <Check />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-        </div>
+        </AnimateIn>
       </section>
 
-      {/* ── FOUNDER NOTE ── */}
-      <section className="bg-white py-20 px-6 border-t border-slate-100">
-        <div className="max-w-3xl mx-auto">
-          <AnimateIn direction="up">
-            <blockquote className="text-center">
-              <p className="text-2xl sm:text-3xl font-bold text-slate-900 leading-snug tracking-tight mb-8">
-                "I got tired of watching agencies pay for AI tools that needed a full-time person to babysit them. Automations that broke. Software nobody logged into. I built AutoAITech because agencies deserve systems that actually run — not ones they have to run."
-              </p>
-              <div className="flex items-center justify-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-sm font-bold text-white flex-shrink-0">
-                  SM
-                </div>
-                <div className="text-left">
-                  <p className="text-sm font-semibold text-slate-900">Sean Mulligan</p>
-                  <p className="text-xs text-slate-500">Founder, AutoAITech</p>
-                </div>
-              </div>
+      {/* ── FOUNDER ── */}
+      <section
+        style={{
+          padding: "6rem 4rem",
+          display: "grid",
+          gridTemplateColumns: "1fr 420px",
+          gap: "6rem",
+          alignItems: "center",
+          borderBottom: `1px solid ${BORDER}`,
+        }}
+      >
+        <AnimateIn direction="left">
+          <div>
+            <SectionLabel text="From the founder" />
+
+            <blockquote
+              style={{ ...display, fontSize: "clamp(1.4rem, 2.5vw, 2rem)", fontWeight: 600, lineHeight: 1.35, letterSpacing: "-0.02em", color: INK, marginBottom: "1.5rem" }}
+            >
+              &ldquo;I built this because I kept watching agencies do the same manual work, every week,
+              forever. That&apos;s not a resourcing problem —{" "}
+              <em style={{ color: RED, fontStyle: "italic", fontWeight: 500 }}>it&apos;s an infrastructure problem.</em>
+              &rdquo;
             </blockquote>
-          </AnimateIn>
-        </div>
-      </section>
 
-      {/* ── CLIENT OS SECTION ── */}
-      <section className="relative bg-[#0a0a0f] py-24 px-6 noise-overlay overflow-hidden">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/8 rounded-full blur-[100px] pointer-events-none" />
-        <div className="relative max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-16">
-
-          {/* Left: copy */}
-          <AnimateIn direction="left" className="lg:w-1/2 flex flex-col gap-6">
-            <span className="inline-flex w-fit bg-blue-600/15 border border-blue-600/25 text-blue-400 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">
-              Client OS — Included
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight leading-tight">
-              Your clients see exactly what the AI is doing
-            </h2>
-            <p className="text-slate-400 text-lg leading-relaxed">
-              Every agency I work with gets access to the AutoAITech Client OS — a live dashboard showing active
-              systems, integration health, and ROI in real time. No more "what's it doing?" calls.
+            <p style={{ ...sans, fontSize: 15, fontWeight: 300, color: INK_MID, lineHeight: 1.75, marginBottom: "1.25rem", maxWidth: 520 }}>
+              I&apos;m Sean, based in Ireland. I&apos;ve spent the last year building the infrastructure I kept
+              wishing agencies had access to. Not SaaS tools. Not one-off automations. Actual
+              infrastructure that keeps running and keeps improving.
             </p>
-            <ul className="flex flex-col gap-3">
-              {[
-                "Live system status — see what's running right now",
-                "ROI tracked per system, per week",
-                "35+ integrations connected and monitored",
-                "Event feed showing every action taken",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-3 text-slate-300 text-sm">
-                  <span className="text-blue-400 mt-0.5 flex-shrink-0">✓</span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <Link href="/contact" className="btn-glow inline-flex w-fit bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-xl text-sm transition-colors">
-              Get access for your agency →
-            </Link>
-          </AnimateIn>
+            <p style={{ ...sans, fontSize: 15, fontWeight: 300, color: INK_MID, lineHeight: 1.75, marginBottom: "2rem", maxWidth: 520 }}>
+              I work with a small number of agencies at a time. If we&apos;re a fit, we&apos;ll know it in the
+              first call.
+            </p>
 
-          {/* Right: OS mockup */}
-          <AnimateIn direction="right" className="lg:w-1/2 w-full max-w-md mx-auto lg:mx-0">
-            <div className="rounded-2xl border border-white/10 bg-[#111118] shadow-2xl overflow-hidden">
-              <div className="bg-[#0d0d12] border-b border-white/5 px-4 py-3 flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <div className="w-2.5 h-2.5 rounded-full bg-red-500/50" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/50" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-green-500/50" />
-                </div>
-                <span className="text-slate-500 text-xs font-mono">app.autoaitech.co</span>
-                <div className="w-16" />
+            <div className="flex items-center gap-3.5">
+              <div
+                style={{
+                  width: 44, height: 44, borderRadius: "50%",
+                  background: `linear-gradient(135deg, ${GREEN_LIGHT}, ${GREEN_BORDER})`,
+                  border: `2px solid ${BORDER}`,
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  ...display, fontSize: 16, fontWeight: 700, color: GREEN,
+                }}
+              >
+                S
               </div>
-
-              <div className="p-5 flex flex-col gap-3">
-                {/* Nav row */}
-                <div className="flex items-center gap-3 mb-1">
-                  {["Systems", "Integrations", "ROI", "Events"].map((tab, i) => (
-                    <span key={tab} className={`text-xs px-3 py-1 rounded-md font-medium ${i === 0 ? "bg-blue-600/20 text-blue-400 border border-blue-600/30" : "text-slate-500"}`}>
-                      {tab}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Integration health */}
-                <div className="bg-[#0d0d12] rounded-xl p-4 border border-white/5">
-                  <p className="text-slate-500 text-xs mb-3 font-mono">Integration Health</p>
-                  <div className="grid grid-cols-2 gap-2">
-                    {[
-                      { name: "HubSpot CRM", ok: true },
-                      { name: "Google Analytics", ok: true },
-                      { name: "Meta Ads", ok: true },
-                      { name: "Gmail", ok: true },
-                      { name: "Stripe", ok: false },
-                      { name: "Calendly", ok: true },
-                    ].map((int) => (
-                      <div key={int.name} className="flex items-center gap-2">
-                        <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${int.ok ? "bg-green-400" : "bg-yellow-400"}`} />
-                        <span className="text-slate-400 text-xs truncate">{int.name}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Events feed */}
-                <div className="bg-[#0d0d12] rounded-xl p-4 border border-white/5">
-                  <p className="text-slate-500 text-xs mb-3 font-mono">Recent Events</p>
-                  <div className="flex flex-col gap-2">
-                    {[
-                      { event: "crm.lead.upserted", time: "2s ago", color: "text-blue-400" },
-                      { event: "analytics.daily_summary", time: "1m ago", color: "text-cyan-400" },
-                      { event: "crm.deal.upserted", time: "4m ago", color: "text-blue-400" },
-                      { event: "calendar.event.upserted", time: "9m ago", color: "text-purple-400" },
-                    ].map((ev) => (
-                      <div key={ev.event + ev.time} className="flex items-center justify-between">
-                        <span className={`text-xs font-mono ${ev.color}`}>{ev.event}</span>
-                        <span className="text-slate-600 text-xs">{ev.time}</span>
-                      </div>
-                    ))}
-                  </div>
+              <div>
+                <div style={{ ...display, fontSize: 14, fontWeight: 700, color: INK }}>Sean Mulligan</div>
+                <div style={{ ...mono, fontSize: 10, color: INK_FAINT, textTransform: "uppercase", letterSpacing: "0.06em", marginTop: 2 }}>
+                  Founder — AutoAITech · Dublin, Ireland
                 </div>
               </div>
             </div>
-          </AnimateIn>
-        </div>
+          </div>
+        </AnimateIn>
+
+        {/* Availability panel */}
+        <AnimateIn direction="right">
+          <div style={{ background: "#fafaf9", border: `1px solid ${BORDER}`, borderRadius: 12, padding: "1.75rem" }}>
+            <div style={{ ...mono, fontSize: 9.5, color: INK_FAINT, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "1.25rem" }}>
+              Current availability
+            </div>
+            {[
+              { label: "Agencies onboarded", value: "Taking applications" },
+              { label: "Setup time",         value: "2–3 weeks" },
+              { label: "Monthly retainer",   value: "From €1,200/mo" },
+              { label: "Systems",            value: "Scoped to your agency" },
+            ].map((row) => (
+              <div
+                key={row.label}
+                className="flex items-start justify-between py-3"
+                style={{ borderBottom: `1px solid ${BORDER}` }}
+              >
+                <span style={{ ...sans, fontSize: 13, color: INK_MID }}>{row.label}</span>
+                <span style={{ ...mono, fontSize: 12, color: INK, fontWeight: 500, textAlign: "right" }}>{row.value}</span>
+              </div>
+            ))}
+            <div className="flex items-start justify-between pt-3">
+              <span style={{ ...sans, fontSize: 13, color: INK_MID }}>Active status</span>
+              <span
+                className="inline-flex items-center gap-1"
+                style={{ ...mono, fontSize: 10, color: GREEN, background: GREEN_LIGHT, border: `1px solid ${GREEN_BORDER}`, padding: "2px 7px", borderRadius: 100 }}
+              >
+                <span style={{ width: 5, height: 5, borderRadius: "50%", background: GREEN, display: "block" }} />
+                Accepting
+              </span>
+            </div>
+          </div>
+        </AnimateIn>
       </section>
 
-      {/* ── BOTTOM CTA ── */}
-      <section className="relative bg-[#0a0a0f] py-24 px-6 text-center noise-overlay overflow-hidden">
-        <div className="absolute inset-0 hero-grid" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-blue-600/10 rounded-full blur-[100px] pointer-events-none" />
-        <div className="relative max-w-3xl mx-auto">
-          <AnimateIn direction="up">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-4">
-              Ready to build infrastructure that{" "}
-              <span className="gradient-text">compounds</span>?
-            </h2>
-            <p className="text-slate-400 text-lg mb-10 max-w-xl mx-auto">
-              Book a call. I'll look at what you're working with, tell you which systems make the most sense, and give you an honest picture of what's possible.
-            </p>
-            <Link href="/contact" className="btn-glow bg-blue-600 hover:bg-blue-700 text-white font-semibold px-10 py-4 rounded-xl text-base transition-colors inline-block">
-              Start a Conversation
+      {/* ── CTA ── */}
+      <section style={{ background: INK, padding: "6rem 4rem", textAlign: "center" }}>
+        <AnimateIn>
+          <div style={{ ...mono, fontSize: 10, color: "#6ee7b7", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "1.25rem" }}>
+            Ready to start
+          </div>
+          <h2
+            style={{ ...display, fontSize: "clamp(2rem, 4vw, 3.2rem)", fontWeight: 700, letterSpacing: "-0.025em", lineHeight: 1.1, color: "white", marginBottom: "1rem" }}
+          >
+            Built for your agency.<br />
+            <em style={{ color: "#6ee7b7", fontStyle: "italic", fontWeight: 600 }}>One call to start.</em>
+          </h2>
+          <p style={{ ...sans, fontSize: 16, fontWeight: 300, color: "#6b6a67", maxWidth: 480, margin: "0 auto 2.5rem", lineHeight: 1.65 }}>
+            One 30-minute call and we&apos;ll tell you exactly what your agency is missing and what that
+            infrastructure looks like in practice.
+          </p>
+          <div className="flex items-center justify-center gap-3">
+            <Link href="/contact" className="btn-green">
+              Book a free call
             </Link>
-            <p className="text-slate-600 text-sm mt-4">No commitment. No pitch deck. Just a real conversation.</p>
-          </AnimateIn>
-        </div>
+            <Link
+              href="/systems"
+              className="no-underline"
+              style={{ ...sans, fontSize: 14, color: "#6b6a67", border: "1px solid #333", padding: "12px 24px", borderRadius: 8, transition: "border-color 0.15s" }}
+            >
+              See the systems
+            </Link>
+          </div>
+        </AnimateIn>
       </section>
     </>
   );

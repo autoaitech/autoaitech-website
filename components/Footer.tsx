@@ -1,42 +1,43 @@
+"use client";
+
 import Link from "next/link";
 import LogoMark from "./LogoMark";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0A0A0A] border-t border-[#1E293B]">
-      <div className="max-w-7xl mx-auto px-6 py-12">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-          {/* Brand */}
-          <div>
-            <div className="flex items-center gap-2.5 text-white font-bold text-xl tracking-tight mb-2">
-              <LogoMark className="w-6 h-6" />
-              <span>Auto<span className="gradient-text-blue">AI</span>Tech</span>
-            </div>
-            <p className="text-slate-400 text-sm max-w-xs">
-              AI infrastructure for agencies and B2B businesses. Built to run. Built to compound.
-            </p>
-          </div>
+    <footer style={{ background: "#111110", borderTop: "1px solid #1c1c1a" }}>
+      <div
+        className="px-8 lg:px-10 py-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6"
+      >
+        <Link href="/" className="flex items-center gap-2.5 no-underline" style={{ color: "#484f58" }}>
+          <LogoMark className="w-[16px] h-[16px]" />
+          <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "#484f58", letterSpacing: "0.04em" }}>
+            AutoAITech
+          </span>
+        </Link>
 
-          {/* Links */}
-          <div className="flex flex-col sm:flex-row gap-6 sm:gap-12">
-            <div className="flex flex-col gap-3">
-              <span className="text-slate-500 text-xs font-semibold uppercase tracking-wider">Company</span>
-              <Link href="/" className="text-slate-400 hover:text-white text-sm transition-colors">Home</Link>
-              <Link href="/systems" className="text-slate-400 hover:text-white text-sm transition-colors">Systems</Link>
-              <Link href="/contact" className="text-slate-400 hover:text-white text-sm transition-colors">Contact</Link>
-            </div>
-            <div className="flex flex-col gap-3">
-              <span className="text-slate-500 text-xs font-semibold uppercase tracking-wider">Get Started</span>
-              <Link href="/contact" className="text-slate-400 hover:text-white text-sm transition-colors">Get in Touch</Link>
-              <Link href="/contact" className="text-slate-400 hover:text-white text-sm transition-colors">Talk to Us</Link>
-            </div>
-          </div>
+        <div className="flex gap-8">
+          {[
+            { label: "Systems", href: "/systems" },
+            { label: "Pricing",  href: "/contact" },
+            { label: "Contact",  href: "/contact" },
+          ].map((l) => (
+            <Link
+              key={l.label}
+              href={l.href}
+              className="no-underline transition-colors"
+              style={{ fontFamily: "var(--font-sans)", fontSize: 13, color: "#484f58" }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "#6e7681")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "#484f58")}
+            >
+              {l.label}
+            </Link>
+          ))}
         </div>
 
-        <div className="mt-10 pt-6 border-t border-[#1E293B] flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-slate-500 text-sm">© 2026 AutoAITech. All rights reserved.</p>
-          <p className="text-slate-600 text-xs">Built for agencies. Powered by AI.</p>
-        </div>
+        <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "#333", letterSpacing: "0.04em" }}>
+          © 2026 AutoAITech
+        </span>
       </div>
     </footer>
   );

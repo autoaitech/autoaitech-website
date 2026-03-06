@@ -4,74 +4,87 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import LogoMark from "./LogoMark";
 
+const links = [
+  { label: "Systems",  href: "/systems" },
+  { label: "Pricing",  href: "/contact" },
+  { label: "Contact",  href: "/contact" },
+];
+
 export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [visible, setVisible] = useState(true);
+  const [visible,  setVisible]  = useState(true);
   const [scrolled, setScrolled] = useState(false);
-  const lastScrollY = useRef(0);
+  const lastY = useRef(0);
 
   useEffect(() => {
-    function handleScroll() {
-      const currentScrollY = window.scrollY;
-      setScrolled(currentScrollY > 80);
-      if (currentScrollY < 10) {
-        setVisible(true);
-      } else if (currentScrollY < lastScrollY.current) {
-        setVisible(true);
-      } else {
-        setVisible(false);
-      }
-      lastScrollY.current = currentScrollY;
+    function onScroll() {
+      const y = window.scrollY;
+      setScrolled(y > 60);
+      if (y < 10) setVisible(true);
+      else if (y < lastY.current) setVisible(true);
+      else setVisible(false);
+      lastY.current = y;
     }
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const navBg = scrolled
+    ? "bg-white/92 backdrop-blur-sm border-b border-border"
+    : "bg-white border-b border-border";
+
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${visible ? "translate-y-0" : "-translate-y-full"} ${scrolled ? "bg-[#0a0a0f]/95 backdrop-blur-md" : "bg-transparent"}`}>
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${navBg} ${
+        visible ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
+      <div className="px-8 lg:px-10 h-[56px] flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2.5 text-white font-bold text-xl tracking-tight">
-          <LogoMark className="w-6 h-6" />
-          <span>Auto<span className="gradient-text-blue">AI</span>Tech</span>
+        <Link href="/" className="flex items-center gap-2.5 no-underline" style={{ color: "#111110" }}>
+          <LogoMark className="w-[18px] h-[18px]" />
+          <span style={{ fontFamily: "var(--font-mono)", fontSize: 11.5, fontWeight: 500, letterSpacing: "0.05em", color: "#111110" }}>
+            AutoAITech
+          </span>
         </Link>
 
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-8">
-          <Link href="/" className="text-slate-400 hover:text-white text-sm font-medium transition-colors">
-            Home
-          </Link>
-          <Link href="/systems" className="text-slate-400 hover:text-white text-sm font-medium transition-colors">
-            Systems
-          </Link>
-          <Link href="/contact" className="text-slate-400 hover:text-white text-sm font-medium transition-colors">
-            Contact
-          </Link>
+          {links.map((l) => (
+            <Link
+              key={l.label}
+              href={l.href}
+              className="no-underline transition-colors"
+              style={{ fontFamily: "var(--font-sans)", fontSize: 13.5, color: "#6b6a67" }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "#111110")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "#6b6a67")}
+            >
+              {l.label}
+            </Link>
+          ))}
         </div>
 
         {/* CTA */}
         <div className="hidden md:block">
-          <Link
-            href="/contact"
-            className="btn-glow bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-colors"
-          >
-            Get in Touch
+          <Link href="/contact" className="btn-nav-green">
+            Book a call
           </Link>
         </div>
 
-        {/* Mobile hamburger */}
+        {/* Mobile toggle */}
         <button
-          className="md:hidden text-white p-2"
+          className="md:hidden p-2"
+          style={{ color: "#111110" }}
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
           {menuOpen ? (
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
             </svg>
           ) : (
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           )}
         </button>
@@ -79,16 +92,20 @@ export default function Nav() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden bg-[#0a0a0f] border-t border-white/5 px-6 py-4 flex flex-col gap-4">
-          <Link href="/" className="text-slate-300 hover:text-white text-sm font-medium" onClick={() => setMenuOpen(false)}>Home</Link>
-          <Link href="/systems" className="text-slate-300 hover:text-white text-sm font-medium" onClick={() => setMenuOpen(false)}>Systems</Link>
-          <Link href="/contact" className="text-slate-300 hover:text-white text-sm font-medium" onClick={() => setMenuOpen(false)}>Contact</Link>
-          <Link
-            href="/contact"
-            className="bg-blue-600 text-white text-sm font-semibold px-5 py-2.5 rounded-lg text-center"
-            onClick={() => setMenuOpen(false)}
-          >
-            Get in Touch
+        <div className="md:hidden bg-white border-t border-border px-8 py-5 flex flex-col gap-4">
+          {links.map((l) => (
+            <Link
+              key={l.label}
+              href={l.href}
+              className="no-underline"
+              style={{ fontFamily: "var(--font-sans)", fontSize: 14, color: "#6b6a67" }}
+              onClick={() => setMenuOpen(false)}
+            >
+              {l.label}
+            </Link>
+          ))}
+          <Link href="/contact" className="btn-nav-green text-center mt-2" onClick={() => setMenuOpen(false)}>
+            Book a call
           </Link>
         </div>
       )}
