@@ -77,18 +77,18 @@ const compareRows = [
 const steps = [
   {
     n: "1",
-    title: "We scope your setup",
-    body: "One call to understand your agency, your clients, and where the biggest gaps are. No 40-page questionnaires. We figure this out together.",
+    title: "I scope your setup",
+    body: "One call to understand your agency, your clients, and where the biggest gaps are. No 40-page questionnaires. I figure this out with you.",
   },
   {
     n: "2",
-    title: "We build and connect",
+    title: "I build and connect",
     body: "Your systems are built, integrated with your existing tools, and tested. You get access to the Client OS so you can see exactly what's running.",
   },
   {
     n: "3",
     title: "They run. You grow.",
-    body: "From month one, your systems are live. We monitor, maintain, and improve them on a monthly retainer. You pay for outcomes, not hours.",
+    body: "From month one, your systems are live. I monitor, maintain, and improve them on a monthly retainer. You pay for outcomes, not hours.",
   },
 ];
 
@@ -457,12 +457,12 @@ export default function HomePage() {
               {
                 n: "1",
                 title: "30-minute scoping call",
-                body: "We identify your highest-impact gaps. No 40-page questionnaire — we figure it out together.",
+                body: "I identify your highest-impact gaps. No 40-page questionnaire — I figure it out with you.",
               },
               {
                 n: "2",
                 title: "Systems scoped and priced",
-                body: "You get a clear proposal: exactly what we'll build, how it connects, and what it costs.",
+                body: "You get a clear proposal: exactly what I'll build, how it connects, and what it costs.",
               },
               {
                 n: "3",
@@ -472,7 +472,7 @@ export default function HomePage() {
               {
                 n: "4",
                 title: "Monthly retainer — no surprises",
-                body: "We monitor, maintain, and improve your infrastructure. You pay for outcomes, not hours.",
+                body: "I monitor, maintain, and improve your infrastructure. You pay for outcomes, not hours.",
               },
             ].map((step, i, arr) => (
               <div
@@ -515,7 +515,7 @@ export default function HomePage() {
             <em style={{ color: "#6ee7b7", fontStyle: "italic", fontWeight: 600 }}>One call to start.</em>
           </h2>
           <p style={{ ...sans, fontSize: 16, fontWeight: 300, color: "#6b6a67", maxWidth: 480, margin: "0 auto 2.5rem", lineHeight: 1.65 }}>
-            One 30-minute call and we&apos;ll tell you exactly what your agency is missing and what that
+            One 30-minute call and I&apos;ll tell you exactly what your agency is missing and what that
             infrastructure looks like in practice.
           </p>
           <div className="flex items-center justify-center gap-3">

@@ -96,10 +96,10 @@ export default function ContactPage() {
           <h1
             style={{ ...display, fontSize: "clamp(2.4rem, 4vw, 3.4rem)", fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.02em", color: INK, maxWidth: 620, marginBottom: "1.25rem" }}
           >
-            Tell us your biggest bottleneck.
+            Tell me your biggest bottleneck.
           </h1>
           <p style={{ ...sans, fontSize: 17, fontWeight: 300, color: INK_MID, maxWidth: 520, lineHeight: 1.65 }}>
-            No sales pitch. One 30-minute call and we&apos;ll tell you exactly what your agency is missing
+            No sales pitch. One 30-minute call and I&apos;ll tell you exactly what your agency is missing
             and what the infrastructure looks like in practice.
           </p>
         </AnimateIn>
@@ -155,7 +155,7 @@ export default function ContactPage() {
                   Book a free call
                 </h2>
                 <p style={{ ...sans, fontSize: 14, fontWeight: 300, color: INK_MID, marginBottom: "2rem", lineHeight: 1.6 }}>
-                  Fill this in and I&apos;ll come prepared. We&apos;ll talk through your biggest gaps and what infrastructure would actually solve them.
+                  Fill this in and I&apos;ll come prepared. I&apos;ll walk through your biggest gaps and what infrastructure would actually solve them.
                 </p>
 
                 <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
@@ -236,7 +236,7 @@ export default function ContactPage() {
                       rows={5}
                       value={form.challenge}
                       onChange={handleChange}
-                      placeholder="Tell us what's slowing your growth, what you're trying to solve, or where you feel like you're leaving money on the table..."
+                      placeholder="Tell me what's slowing your growth, what you're trying to solve, or where you feel like you're leaving money on the table..."
                       style={{ ...inputStyle, resize: "none" }}
                     />
                   </div>
