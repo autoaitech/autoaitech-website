@@ -5,7 +5,6 @@ import Link from "next/link";
 import LogoMark from "./LogoMark";
 
 const links = [
-  { label: "Systems", href: "/systems" },
   { label: "Contact", href: "/contact" },
 ];
 

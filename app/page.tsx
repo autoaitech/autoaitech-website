@@ -177,16 +177,6 @@ export default function HomePage() {
                 <path d="M3 7h8M8 4l3 3-3 3" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </Link>
-            <Link
-              href="/systems"
-              className="no-underline flex items-center gap-1.5 transition-colors"
-              style={{ ...sans, fontSize: 14, color: INK_MID }}
-            >
-              See the systems
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </Link>
           </div>
 
         </div>
@@ -531,13 +521,6 @@ export default function HomePage() {
           <div className="flex items-center justify-center gap-3">
             <Link href="/contact" className="btn-green">
               Book a free call
-            </Link>
-            <Link
-              href="/systems"
-              className="no-underline"
-              style={{ ...sans, fontSize: 14, color: "#6b6a67", border: "1px solid #333", padding: "12px 24px", borderRadius: 8, transition: "border-color 0.15s" }}
-            >
-              See the systems
             </Link>
           </div>
         </AnimateIn>
