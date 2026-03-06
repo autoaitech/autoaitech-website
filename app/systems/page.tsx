@@ -141,7 +141,7 @@ export default function SystemsPage() {
           <h1
             style={{ ...display, fontSize: "clamp(2.4rem, 4vw, 3.4rem)", fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.02em", color: INK, maxWidth: 700, marginBottom: "1.25rem" }}
           >
-            Six systems. Built to compound.
+            Infrastructure that runs your agency.
           </h1>
           <p style={{ ...sans, fontSize: 17, fontWeight: 300, color: INK_MID, maxWidth: 560, lineHeight: 1.65 }}>
             Each system runs continuously, generates measurable output, and feeds data into the others.

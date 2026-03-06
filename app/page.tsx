@@ -24,44 +24,44 @@ const DARK_GREEN = "#3fb950";
 
 /* ── Data ── */
 const liveSystems = [
-  { name: "Lead Response Engine", tag: "follow-up",  metric: "Active",       metricLabel: "running" },
-  { name: "Proposal Engine",      tag: "sales",       metric: "Active",       metricLabel: "running" },
-  { name: "Onboarding System",    tag: "retention",   metric: "3 days saved", metricLabel: "per new client" },
-  { name: "Reporting System",     tag: "visibility",  metric: "Auto",         metricLabel: "monthly reports" },
-  { name: "Review Engine",        tag: "reputation",  metric: "+2.3×",        metricLabel: "review velocity" },
-  { name: "Reactivation Engine",  tag: "growth",      metric: "Active",       metricLabel: "running" },
+  { name: "Smart Onboarding Engine",      tag: "onboarding",   metric: "Active", metricLabel: "running" },
+  { name: "AI Lead Engine",               tag: "acquisition",  metric: "Active", metricLabel: "running" },
+  { name: "Retention Reactor AI",         tag: "retention",    metric: "Active", metricLabel: "running" },
+  { name: "ROI Intelligence Hub",         tag: "visibility",   metric: "Active", metricLabel: "running" },
+  { name: "Creative Intelligence Engine", tag: "creative",     metric: "Active", metricLabel: "running" },
+  { name: "Campaign Monitoring Agents",   tag: "performance",  metric: "24/7",   metricLabel: "monitoring" },
 ];
 
 const systemCards = [
   {
-    name: "Lead Response Engine",
-    desc: "Responds to every inbound lead fast. Personalised, qualified, and booked — before your competitors have opened their email.",
-    metric: "↗ More leads converted",
+    name: "Smart Onboarding Engine",
+    desc: "Runs every step of new client activation automatically — access collection, audit, strategy approval, campaign build. Each step triggers the next.",
+    metric: "↗ Days to activate, not weeks",
   },
   {
-    name: "Proposal Engine",
-    desc: "Generates fully personalised proposals from a call transcript. Branded, scoped, and ready to send in under two hours instead of two days.",
-    metric: "↗ 70% less time on proposals",
+    name: "AI Lead Engine",
+    desc: "Discovers target companies, researches decision-makers, generates personalised outreach, and routes qualified replies to your team. Continuously.",
+    metric: "↗ 3–5× qualified pipeline",
   },
   {
-    name: "Onboarding System",
-    desc: "Structured client onboarding — strategy docs, approvals, data collection — without chasing emails for three weeks.",
-    metric: "↗ 3 days saved per client",
+    name: "Retention Reactor AI",
+    desc: "Monitors every client account for disengagement signals and triggers the right intervention automatically — before churn becomes a cancellation call.",
+    metric: "↗ Churn caught before it happens",
   },
   {
-    name: "Reporting System",
-    desc: "Automated monthly performance reports built from your data. Clients see ROI clearly. No more last-minute scrambles before calls.",
-    metric: "↗ Clients stay longer",
+    name: "ROI Intelligence Hub",
+    desc: "Aggregates output from every connected system into attributed metrics and generates a branded monthly report. Automatically, every month.",
+    metric: "↗ Clients see value — and stay",
   },
   {
-    name: "Review Engine",
-    desc: "Systematically captures 5-star reviews at the moment your clients are happiest. Turns good work into visible, searchable proof.",
-    metric: "↗ 2.3× more reviews per month",
+    name: "Creative Intelligence Engine",
+    desc: "Ingests ad performance data, identifies winning patterns, generates new variants, and routes top performers for approval. Weekly creative iteration.",
+    metric: "↗ Lower CPAs, higher ROAS",
   },
   {
-    name: "Reactivation Engine",
-    desc: "Re-engages your dormant leads and past clients automatically. Consistent, human-feeling sequences with real context — not spam blasts.",
-    metric: "↗ Strong win-back rates",
+    name: "Campaign Monitoring Agents",
+    desc: "Monitors campaigns 24/7 across every connected platform — flagging spend anomalies and performance drops the moment they appear.",
+    metric: "↗ Issues caught before they cost",
   },
 ];
 
@@ -164,9 +164,9 @@ export default function HomePage() {
             className="animate-hero-3 mb-10"
             style={{ ...sans, fontSize: 17, fontWeight: 300, lineHeight: 1.65, color: INK_MID, maxWidth: 500 }}
           >
-            AutoAITech builds and runs AI infrastructure for Irish and UK agencies — lead follow-up,
-            proposals, reporting, and more — running 24/7 so your team can focus on the work that
-            actually matters.
+            AutoAITech builds and runs AI infrastructure for Irish and UK agencies — onboarding,
+            lead generation, retention, reporting, creative, and campaign monitoring — running 24/7
+            so your team can focus on the work that actually matters.
           </p>
 
           {/* CTAs */}
@@ -189,26 +189,6 @@ export default function HomePage() {
             </Link>
           </div>
 
-          {/* Stats */}
-          <div
-            className="animate-hero-5 flex gap-10 pt-8"
-            style={{ borderTop: `1px solid ${BORDER}` }}
-          >
-            {[
-              { val: "2–3", unit: "wk",  label: "setup time" },
-              { val: "24",  unit: "/7",  label: "systems run continuously" },
-              { val: "99",  unit: "%",   label: "uptime target" },
-            ].map((s) => (
-              <div key={s.label}>
-                <div style={{ ...display, fontSize: "2rem", fontWeight: 700, color: INK, lineHeight: 1, marginBottom: 4 }}>
-                  {s.val}<span style={{ color: GREEN }}>{s.unit}</span>
-                </div>
-                <div style={{ ...mono, fontSize: 10, color: INK_FAINT, textTransform: "uppercase", letterSpacing: "0.07em" }}>
-                  {s.label}
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
 
         {/* Right — dark live panel */}
@@ -477,37 +457,57 @@ export default function HomePage() {
           </div>
         </AnimateIn>
 
-        {/* Availability panel */}
+        {/* What happens next panel */}
         <AnimateIn direction="right">
           <div style={{ background: "#fafaf9", border: `1px solid ${BORDER}`, borderRadius: 12, padding: "1.75rem" }}>
-            <div style={{ ...mono, fontSize: 9.5, color: INK_FAINT, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "1.25rem" }}>
-              Current availability
+            <div style={{ ...mono, fontSize: 9.5, color: INK_FAINT, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "1.5rem" }}>
+              What happens next
             </div>
             {[
-              { label: "Agencies onboarded", value: "Taking applications" },
-              { label: "Setup time",         value: "2–3 weeks" },
-              { label: "Monthly retainer",   value: "From €1,200/mo" },
-              { label: "Systems",            value: "Scoped to your agency" },
-            ].map((row) => (
+              {
+                n: "1",
+                title: "30-minute scoping call",
+                body: "We identify your highest-impact gaps. No 40-page questionnaire — we figure it out together.",
+              },
+              {
+                n: "2",
+                title: "Systems scoped and priced",
+                body: "You get a clear proposal: exactly what we'll build, how it connects, and what it costs.",
+              },
+              {
+                n: "3",
+                title: "Live in 2–3 weeks",
+                body: "Systems are built, integrated with your stack, and running. You get access to the Client OS to see everything.",
+              },
+              {
+                n: "4",
+                title: "Monthly retainer — no surprises",
+                body: "We monitor, maintain, and improve your infrastructure. You pay for outcomes, not hours.",
+              },
+            ].map((step, i, arr) => (
               <div
-                key={row.label}
-                className="flex items-start justify-between py-3"
-                style={{ borderBottom: `1px solid ${BORDER}` }}
+                key={step.n}
+                className="flex gap-3"
+                style={{ paddingBottom: i < arr.length - 1 ? "1.25rem" : 0, marginBottom: i < arr.length - 1 ? "1.25rem" : 0, borderBottom: i < arr.length - 1 ? `1px solid ${BORDER}` : "none" }}
               >
-                <span style={{ ...sans, fontSize: 13, color: INK_MID }}>{row.label}</span>
-                <span style={{ ...mono, fontSize: 12, color: INK, fontWeight: 500, textAlign: "right" }}>{row.value}</span>
+                <div
+                  style={{
+                    width: 22, height: 22, flexShrink: 0,
+                    border: `1px solid ${GREEN}`,
+                    borderRadius: "50%",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    ...mono, fontSize: 10, color: GREEN,
+                    marginTop: 2,
+                  }}
+                >
+                  {step.n}
+                </div>
+                <div>
+                  <div style={{ ...display, fontSize: 13, fontWeight: 700, color: INK, marginBottom: 3 }}>{step.title}</div>
+                  <p style={{ ...sans, fontSize: 12, fontWeight: 300, color: INK_MID, lineHeight: 1.6 }}>{step.body}</p>
+                </div>
               </div>
             ))}
-            <div className="flex items-start justify-between pt-3">
-              <span style={{ ...sans, fontSize: 13, color: INK_MID }}>Active status</span>
-              <span
-                className="inline-flex items-center gap-1"
-                style={{ ...mono, fontSize: 10, color: GREEN, background: GREEN_LIGHT, border: `1px solid ${GREEN_BORDER}`, padding: "2px 7px", borderRadius: 100 }}
-              >
-                <span style={{ width: 5, height: 5, borderRadius: "50%", background: GREEN, display: "block" }} />
-                Accepting
-              </span>
-            </div>
           </div>
         </AnimateIn>
       </section>

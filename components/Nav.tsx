@@ -5,9 +5,8 @@ import Link from "next/link";
 import LogoMark from "./LogoMark";
 
 const links = [
-  { label: "Systems",  href: "/systems" },
-  { label: "Pricing",  href: "/contact" },
-  { label: "Contact",  href: "/contact" },
+  { label: "Systems", href: "/systems" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Nav() {
