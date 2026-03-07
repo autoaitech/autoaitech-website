@@ -18,8 +18,6 @@ export default function Footer() {
 
         <div className="flex gap-8">
           {[
-            { label: "Systems", href: "/#systems" },
-            { label: "How it works", href: "/#how-it-works" },
             { label: "Contact", href: "/contact" },
           ].map((l) => (
             <Link
