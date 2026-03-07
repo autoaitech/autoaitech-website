@@ -198,14 +198,30 @@ export default function HomePage() {
       {/* ── SYSTEMS ── */}
       <section id="systems" style={{ padding: "6rem 4rem" }}>
         <AnimateIn>
-          <SectionLabel text="The infrastructure" />
-          <h2 style={{ ...display, fontSize: "clamp(1.8rem, 3vw, 2.6rem)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.15, color: INK, maxWidth: 600, marginBottom: "1rem" }}>
-            The work your agency keeps doing manually.
-          </h2>
-          <p style={{ ...sans, fontSize: 16, fontWeight: 300, color: INK_MID, maxWidth: 540, lineHeight: 1.65, marginBottom: "3.5rem" }}>
-            We identify your highest-impact gaps and build the infrastructure to close them. These are
-            the systems we build most often — each one solving a real problem agencies face every week.
-          </p>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 280px", gap: "4rem", alignItems: "end", marginBottom: "3.5rem" }}>
+            <div>
+              <SectionLabel text="The infrastructure" />
+              <h2 style={{ ...display, fontSize: "clamp(1.8rem, 3vw, 2.6rem)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.15, color: INK, marginBottom: "1rem" }}>
+                The work your agency keeps doing manually.
+              </h2>
+              <p style={{ ...sans, fontSize: 16, fontWeight: 300, color: INK_MID, lineHeight: 1.65, maxWidth: 480 }}>
+                Every agency has the same gaps. These are the systems built to close them — each one
+                targeting a real, recurring problem your team faces every week.
+              </p>
+            </div>
+            <div style={{ border: `1px solid ${BORDER}`, borderRadius: 12, padding: "1.75rem 2rem", background: "#fafaf9", display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+              {[
+                { value: "6", label: "Systems in the stack" },
+                { value: "24/7", label: "Autonomous operation" },
+                { value: "1", label: "Provider. Fully connected." },
+              ].map((stat) => (
+                <div key={stat.label} style={{ display: "flex", alignItems: "baseline", gap: "1rem" }}>
+                  <span style={{ ...mono, fontSize: "1.6rem", fontWeight: 500, color: GREEN, minWidth: "3.5rem" }}>{stat.value}</span>
+                  <span style={{ ...sans, fontSize: 12.5, color: INK_MID, fontWeight: 300, lineHeight: 1.4 }}>{stat.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </AnimateIn>
 
         {/* 3-col grid */}
@@ -240,43 +256,46 @@ export default function HomePage() {
 
       {/* ── HOW IT WORKS ── */}
       <section id="how-it-works" style={{ background: "#fafaf9", borderTop: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}`, padding: "6rem 4rem" }}>
-        <AnimateIn>
-          <SectionLabel text="How it works" />
-          <h2 style={{ ...display, fontSize: "clamp(1.8rem, 3vw, 2.6rem)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.15, color: INK, maxWidth: 600, marginBottom: "3rem" }}>
-            Set up once. Runs forever.
-          </h2>
-        </AnimateIn>
+        <div style={{ maxWidth: 960, margin: "0 auto" }}>
+          <AnimateIn>
+            <SectionLabel text="How it works" />
+            <h2 style={{ ...display, fontSize: "clamp(1.8rem, 3vw, 2.6rem)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.15, color: INK, maxWidth: 600, marginBottom: "3rem" }}>
+              Set up once. Runs forever.
+            </h2>
+          </AnimateIn>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "3rem" }}>
-          {steps.map((s, i) => (
-            <AnimateIn key={s.n} delay={i * 80} direction="up">
-              <div>
-                <div
-                  style={{
-                    width: 26, height: 26,
-                    border: `1px solid ${GREEN}`,
-                    borderRadius: "50%",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    ...mono, fontSize: 11, color: GREEN,
-                    marginBottom: "1rem",
-                  }}
-                >
-                  {s.n}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "3rem" }}>
+            {steps.map((s, i) => (
+              <AnimateIn key={s.n} delay={i * 80} direction="up">
+                <div>
+                  <div
+                    style={{
+                      width: 26, height: 26,
+                      border: `1px solid ${GREEN}`,
+                      borderRadius: "50%",
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      ...mono, fontSize: 11, color: GREEN,
+                      marginBottom: "1rem",
+                    }}
+                  >
+                    {s.n}
+                  </div>
+                  <div style={{ ...display, fontSize: "1.05rem", fontWeight: 700, color: INK, marginBottom: "0.5rem", letterSpacing: "-0.01em" }}>
+                    {s.title}
+                  </div>
+                  <p style={{ ...sans, fontSize: 14, fontWeight: 300, color: INK_MID, lineHeight: 1.65 }}>
+                    {s.body}
+                  </p>
                 </div>
-                <div style={{ ...display, fontSize: "1.05rem", fontWeight: 700, color: INK, marginBottom: "0.5rem", letterSpacing: "-0.01em" }}>
-                  {s.title}
-                </div>
-                <p style={{ ...sans, fontSize: 14, fontWeight: 300, color: INK_MID, lineHeight: 1.65 }}>
-                  {s.body}
-                </p>
-              </div>
-            </AnimateIn>
-          ))}
+              </AnimateIn>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ── COMPARISON ── */}
       <section style={{ padding: "6rem 4rem", background: "white", borderBottom: `1px solid ${BORDER}` }}>
+        <div style={{ maxWidth: 960, margin: "0 auto" }}>
         <AnimateIn>
           <SectionLabel text="Why AutoAITech" />
           <h2 style={{ ...display, fontSize: "clamp(1.8rem, 3vw, 2.6rem)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.15, color: INK, maxWidth: 600, marginBottom: "1rem" }}>
@@ -327,6 +346,7 @@ export default function HomePage() {
             </table>
           </div>
         </AnimateIn>
+        </div>
       </section>
 
       {/* ── FOUNDER ── */}
