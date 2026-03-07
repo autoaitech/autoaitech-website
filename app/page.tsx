@@ -196,7 +196,7 @@ export default function HomePage() {
       </div>
 
       {/* ── SYSTEMS ── */}
-      <section style={{ padding: "6rem 4rem" }}>
+      <section id="systems" style={{ padding: "6rem 4rem" }}>
         <AnimateIn>
           <SectionLabel text="The infrastructure" />
           <h2 style={{ ...display, fontSize: "clamp(1.8rem, 3vw, 2.6rem)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.15, color: INK, maxWidth: 600, marginBottom: "1rem" }}>
@@ -239,7 +239,7 @@ export default function HomePage() {
       </section>
 
       {/* ── HOW IT WORKS ── */}
-      <section style={{ background: "#fafaf9", borderTop: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}`, padding: "6rem 4rem" }}>
+      <section id="how-it-works" style={{ background: "#fafaf9", borderTop: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}`, padding: "6rem 4rem" }}>
         <AnimateIn>
           <SectionLabel text="How it works" />
           <h2 style={{ ...display, fontSize: "clamp(1.8rem, 3vw, 2.6rem)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.15, color: INK, maxWidth: 600, marginBottom: "3rem" }}>
