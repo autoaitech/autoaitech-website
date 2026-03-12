@@ -5,7 +5,6 @@ import AnimateIn from "@/components/AnimateIn";
 
 /* ── Design tokens (matches site theme) ── */
 const display: React.CSSProperties = { fontFamily: "var(--font-display)" };
-const mono: React.CSSProperties    = { fontFamily: "var(--font-mono)" };
 const sans: React.CSSProperties    = { fontFamily: "var(--font-sans)" };
 
 const GREEN        = "#059669";
@@ -16,16 +15,6 @@ const INK_MID      = "#6b6a67";
 const INK_FAINT    = "#a09e9b";
 const BORDER       = "#e2e1de";
 
-function SectionLabel({ text }: { text: string }) {
-  return (
-    <div className="flex items-center gap-2.5 mb-4">
-      <div style={{ width: 24, height: 1, background: GREEN }} />
-      <span style={{ ...mono, fontSize: 10, fontWeight: 500, color: GREEN, textTransform: "uppercase", letterSpacing: "0.1em" }}>
-        {text}
-      </span>
-    </div>
-  );
-}
 
 const inputStyle: React.CSSProperties = {
   ...sans,
@@ -86,27 +75,8 @@ export default function ContactPage() {
 
   return (
     <>
-      {/* ── HERO ── */}
-      <section
-        className="mt-[56px] border-b"
-        style={{ background: "white", padding: "5rem 4rem 4rem", borderColor: BORDER }}
-      >
-        <AnimateIn>
-          <SectionLabel text="Get in touch" />
-          <h1
-            style={{ ...display, fontSize: "clamp(2.4rem, 4vw, 3.4rem)", fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.02em", color: INK, maxWidth: 620, marginBottom: "1.25rem" }}
-          >
-            Tell me your biggest bottleneck.
-          </h1>
-          <p style={{ ...sans, fontSize: 17, fontWeight: 300, color: INK_MID, maxWidth: 520, lineHeight: 1.65 }}>
-            No sales pitch. One 30-minute call and I&apos;ll tell you exactly what your agency is missing
-            and what the infrastructure looks like in practice.
-          </p>
-        </AnimateIn>
-      </section>
-
       {/* ── FORM ── */}
-      <section style={{ background: "#fafaf9", padding: "5rem 4rem", borderBottom: `1px solid ${BORDER}` }}>
+      <section className="mt-[56px]" style={{ background: "#fafaf9", padding: "5rem 4rem", borderBottom: `1px solid ${BORDER}` }}>
         <div style={{ maxWidth: 640, margin: "0 auto" }}>
           <AnimateIn direction="up">
             {submitted ? (
