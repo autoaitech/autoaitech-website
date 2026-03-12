@@ -48,7 +48,7 @@ export default function Footer() {
             onMouseLeave={(e) => (e.currentTarget.style.color = "#2e2e2b")}
           >Terms</a>
           {sep}
-          <a href="https://www.linkedin.com/company/autoaitech" target="_blank" rel="noopener noreferrer" style={linkStyle}
+          <a href="https://linkedin.com/company/autoaitech" target="_blank" rel="noopener noreferrer" style={linkStyle}
             onMouseEnter={(e) => (e.currentTarget.style.color = "#6b6a67")}
             onMouseLeave={(e) => (e.currentTarget.style.color = "#2e2e2b")}
           >LinkedIn</a>
