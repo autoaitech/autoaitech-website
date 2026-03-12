@@ -3,39 +3,62 @@
 import Link from "next/link";
 import LogoMark from "./LogoMark";
 
+const mono: React.CSSProperties = { fontFamily: "var(--font-mono)" };
+
+const linkStyle: React.CSSProperties = {
+  ...mono,
+  fontSize: 9.5,
+  color: "#2e2e2b",
+  textDecoration: "none",
+  letterSpacing: "0.05em",
+  textTransform: "uppercase",
+};
+
+const sep = <span style={{ ...mono, fontSize: 9.5, color: "#222220", margin: "0 0.75rem" }}>|</span>;
+
 export default function Footer() {
   return (
     <footer style={{ background: "#111110", borderTop: "1px solid #1c1c1a" }}>
-      <div
-        className="px-8 lg:px-10 py-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6"
-      >
-        <Link href="/" className="flex items-center gap-2.5 no-underline" style={{ color: "#484f58" }}>
-          <LogoMark className="w-[16px] h-[16px]" />
-          <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "#484f58", letterSpacing: "0.04em" }}>
+      <div style={{ padding: "0 4rem", height: 52, display: "flex", alignItems: "center" }}>
+
+        {/* Logo */}
+        <Link href="/" style={{ display: "flex", alignItems: "center", gap: 7, textDecoration: "none", flexShrink: 0 }}>
+          <LogoMark className="w-[15px] h-[15px] opacity-55" />
+          <span style={{ ...mono, fontSize: 10.5, color: "#4a4946", letterSpacing: "0.05em" }}>
             AutoAITech
           </span>
         </Link>
 
-        <div className="flex gap-8">
-          {[
-            { label: "Contact", href: "/contact" },
-          ].map((l) => (
-            <Link
-              key={l.label}
-              href={l.href}
-              className="no-underline transition-colors"
-              style={{ fontFamily: "var(--font-sans)", fontSize: 13, color: "#484f58" }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "#6e7681")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "#484f58")}
-            >
-              {l.label}
-            </Link>
-          ))}
+        {/* Separator line */}
+        <div style={{ flex: 1, height: 1, background: "#1e1e1c", margin: "0 2rem" }} />
+
+        {/* Links */}
+        <div style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
+          <span style={{ ...mono, fontSize: 9.5, color: "#2e2e2b", letterSpacing: "0.05em" }}>
+            © 2026 AutoAITech
+          </span>
+          {sep}
+          <a href="/privacy" style={linkStyle}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#6b6a67")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "#2e2e2b")}
+          >Privacy Policy</a>
+          {sep}
+          <a href="/terms" style={linkStyle}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#6b6a67")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "#2e2e2b")}
+          >Terms</a>
+          {sep}
+          <a href="https://www.linkedin.com/company/autoaitech" target="_blank" rel="noopener noreferrer" style={linkStyle}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#6b6a67")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "#2e2e2b")}
+          >LinkedIn</a>
+          {sep}
+          <Link href="/contact" style={linkStyle}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#6b6a67")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "#2e2e2b")}
+          >Contact</Link>
         </div>
 
-        <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "#333", letterSpacing: "0.04em" }}>
-          © 2026 AutoAITech
-        </span>
       </div>
     </footer>
   );
