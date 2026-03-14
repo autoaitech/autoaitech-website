@@ -55,7 +55,7 @@ const systemCards = [
   {
     name: "Campaign Monitoring Agents",
     desc: "Monitors campaigns 24/7 across every connected platform — flagging spend anomalies and performance drops the moment they appear.",
-    metric: "↗ Issues caught before they cost",
+    metric: "↗ You find out before your client does",
   },
 ];
 
@@ -166,7 +166,7 @@ export default function HomePage() {
           {/* CTAs */}
           <div className="animate-hero-4 flex items-center gap-4 mb-14">
             <Link href="/contact" className="btn-green">
-              Book a free call
+              Book a call
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                 <path d="M3 7h8M8 4l3 3-3 3" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
@@ -354,9 +354,9 @@ export default function HomePage() {
             </blockquote>
 
             <p style={{ ...sans, fontSize: 15, fontWeight: 300, color: INK_MID, lineHeight: 1.75, marginBottom: "1.25rem", maxWidth: 520 }}>
-              I&apos;m Sean, based in Ireland. I&apos;ve spent the last year building the infrastructure I kept
-              wishing agencies had access to. Not SaaS tools. Not one-off automations. Actual
-              infrastructure that keeps running and keeps improving.
+              I&apos;m Sean, based in Ireland. I built this infrastructure because the problem is the same
+              at every agency I&apos;ve spoken to — too much manual work, not enough systems underneath it.
+              I designed these to run the way agencies actually operate.
             </p>
             <p style={{ ...sans, fontSize: 15, fontWeight: 300, color: INK_MID, lineHeight: 1.75, marginBottom: "2rem", maxWidth: 520 }}>
               I work with a small number of agencies at a time. If we&apos;re a fit, we&apos;ll know it in the
@@ -458,7 +458,7 @@ export default function HomePage() {
           </p>
           <div className="flex items-center justify-center gap-3">
             <Link href="/contact" className="btn-green">
-              Book a free call
+              Book a call
             </Link>
           </div>
         </AnimateIn>
