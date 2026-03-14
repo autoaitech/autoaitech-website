@@ -333,15 +333,11 @@ export default function HomePage() {
       <section
         style={{
           padding: "6rem 4rem",
-          display: "grid",
-          gridTemplateColumns: "1fr 420px",
-          gap: "6rem",
-          alignItems: "center",
           borderBottom: `1px solid ${BORDER}`,
         }}
       >
         <AnimateIn direction="left">
-          <div>
+          <div style={{ maxWidth: 640 }}>
             <SectionLabel text="From the founder" />
 
             <blockquote
@@ -353,12 +349,12 @@ export default function HomePage() {
               &rdquo;
             </blockquote>
 
-            <p style={{ ...sans, fontSize: 15, fontWeight: 300, color: INK_MID, lineHeight: 1.75, marginBottom: "1.25rem", maxWidth: 520 }}>
+            <p style={{ ...sans, fontSize: 15, fontWeight: 300, color: INK_MID, lineHeight: 1.75, marginBottom: "1.25rem" }}>
               I&apos;m Sean, based in Ireland. I built this infrastructure because the problem is the same
               at every agency I&apos;ve spoken to — too much manual work, not enough systems underneath it.
               I designed these to run the way agencies actually operate.
             </p>
-            <p style={{ ...sans, fontSize: 15, fontWeight: 300, color: INK_MID, lineHeight: 1.75, marginBottom: "2rem", maxWidth: 520 }}>
+            <p style={{ ...sans, fontSize: 15, fontWeight: 300, color: INK_MID, lineHeight: 1.75, marginBottom: "2rem" }}>
               I work with a small number of agencies at a time. If we&apos;re a fit, we&apos;ll know it in the
               first call.
             </p>
@@ -384,60 +380,6 @@ export default function HomePage() {
             </div>
           </div>
         </AnimateIn>
-
-        {/* What happens next panel */}
-        <AnimateIn direction="right">
-          <div style={{ background: "#fafaf9", border: `1px solid ${BORDER}`, borderRadius: 12, padding: "1.75rem" }}>
-            <div style={{ ...mono, fontSize: 9.5, color: INK_FAINT, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "1.5rem" }}>
-              What happens next
-            </div>
-            {[
-              {
-                n: "1",
-                title: "30-minute scoping call",
-                body: "I identify your highest-impact gaps. No 40-page questionnaire — I figure it out with you.",
-              },
-              {
-                n: "2",
-                title: "Systems scoped and priced",
-                body: "You get a clear proposal: exactly what I'll build, how it connects, and what it costs.",
-              },
-              {
-                n: "3",
-                title: "Live in 2–3 weeks",
-                body: "Systems are built, integrated with your stack, and running. You get access to the Client OS to see everything.",
-              },
-              {
-                n: "4",
-                title: "Monthly retainer — no surprises",
-                body: "I monitor, maintain, and improve your infrastructure. You pay for outcomes, not hours.",
-              },
-            ].map((step, i, arr) => (
-              <div
-                key={step.n}
-                className="flex gap-3"
-                style={{ paddingBottom: i < arr.length - 1 ? "1.25rem" : 0, marginBottom: i < arr.length - 1 ? "1.25rem" : 0, borderBottom: i < arr.length - 1 ? `1px solid ${BORDER}` : "none" }}
-              >
-                <div
-                  style={{
-                    width: 22, height: 22, flexShrink: 0,
-                    border: `1px solid ${GREEN}`,
-                    borderRadius: "50%",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    ...mono, fontSize: 10, color: GREEN,
-                    marginTop: 2,
-                  }}
-                >
-                  {step.n}
-                </div>
-                <div>
-                  <div style={{ ...display, fontSize: 13, fontWeight: 700, color: INK, marginBottom: 3 }}>{step.title}</div>
-                  <p style={{ ...sans, fontSize: 12, fontWeight: 300, color: INK_MID, lineHeight: 1.6 }}>{step.body}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </AnimateIn>
       </section>
 
       {/* ── CTA ── */}
@@ -458,7 +400,7 @@ export default function HomePage() {
           </p>
           <div className="flex items-center justify-center gap-3">
             <Link href="/contact" className="btn-green">
-              Book a call
+              Start the conversation
             </Link>
           </div>
         </AnimateIn>
