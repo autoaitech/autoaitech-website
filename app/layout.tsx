@@ -3,6 +3,7 @@ import { Bricolage_Grotesque, DM_Serif_Display, DM_Mono, DM_Sans } from "next/fo
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import { Analytics } from "@vercel/analytics/react";
 
 const bricolage = Bricolage_Grotesque({
   weight: ["300", "400", "500", "600", "700", "800"],
@@ -61,6 +62,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Nav />
         <main>{children}</main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
