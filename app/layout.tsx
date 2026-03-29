@@ -3,6 +3,7 @@ import { Bricolage_Grotesque, DM_Serif_Display, DM_Mono, DM_Sans } from "next/fo
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import CookieBanner from "@/components/CookieBanner";
 import { Analytics } from "@vercel/analytics/react";
 
 const bricolage = Bricolage_Grotesque({
@@ -63,6 +64,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main>{children}</main>
         <Footer />
         <Analytics />
+        <CookieBanner />
       </body>
     </html>
   );
