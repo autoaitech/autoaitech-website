@@ -37,7 +37,7 @@ export default function PrivacyPage() {
           Privacy Policy
         </h1>
         <p style={{ ...sans, fontSize: 14, fontWeight: 300, color: INK_FAINT }}>
-          Last updated: 12 March 2026
+          Last updated: 29 March 2026
         </p>
       </div>
 
@@ -103,7 +103,12 @@ export default function PrivacyPage() {
         </Section>
 
         <Section title="8. Cookies">
-          <p>This website does not use tracking or advertising cookies. We use only essential cookies required for the website to function (e.g. security tokens). No consent banner is required for essential cookies under ePrivacy regulations.</p>
+          <p>We use cookies and similar technologies to help operate and improve this website. Specifically:</p>
+          <ul style={{ paddingLeft: "1.25rem", marginTop: "0.5rem", display: "flex", flexDirection: "column", gap: "0.35rem" }}>
+            <li><strong>Essential cookies</strong> — required for the website to function (e.g. security tokens). These cannot be declined.</li>
+            <li><strong>Analytics cookies</strong> — provided by <strong>Vercel Analytics</strong> to help us understand how visitors use the site (pages visited, traffic sources). These are only set if you accept cookies.</li>
+          </ul>
+          <p style={{ marginTop: "0.75rem" }}>When you first visit the site, you will be asked to accept or decline analytics cookies. You can change your preference at any time by clearing your browser&rsquo;s local storage for this site.</p>
         </Section>
 
         <Section title="9. Changes to this policy">
