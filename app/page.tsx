@@ -285,7 +285,7 @@ export default function HomePage() {
         </AnimateIn>
 
         <AnimateIn direction="up" delay={100}>
-          <div style={{ border: `1px solid ${BORDER}`, borderRadius: 12, overflow: "hidden" }}>
+          <div className="hidden md:block" style={{ border: `1px solid ${BORDER}`, borderRadius: 12, overflow: "hidden" }}>
             <div className="overflow-x-auto">
             <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 520 }}>
               <thead>
