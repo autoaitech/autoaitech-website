@@ -156,9 +156,9 @@ export default function HomePage() {
             className="animate-hero-3 mb-10"
             style={{ ...sans, fontSize: 17, fontWeight: 300, lineHeight: 1.65, color: INK_MID, maxWidth: 500 }}
           >
-            AutoAITech builds and runs AI infrastructure for Irish and UK businesses — onboarding,
-            lead generation, retention, reporting, research, and operations — running 24/7
-            so your team can focus on the work that actually matters.
+            AutoAITech builds and runs AI infrastructure for Irish and UK businesses. Lead generation,
+            onboarding, retention, reporting, research, and operations — all running 24/7, so your
+            team can focus on the work that actually matters.
           </p>
 
           {/* CTAs */}
