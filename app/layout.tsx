@@ -38,9 +38,6 @@ const dmSans = DM_Sans({
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  minimumScale: 1,
-  maximumScale: 1,
-  userScalable: false,
 };
 
 export const metadata: Metadata = {
@@ -67,13 +64,6 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${bricolage.variable} ${dmSerif.variable} ${dmMono.variable} ${dmSans.variable}`}>
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: `
-          document.addEventListener('gesturestart', function(e) { e.preventDefault(); }, { passive: false });
-          document.addEventListener('gesturechange', function(e) { e.preventDefault(); }, { passive: false });
-          document.addEventListener('touchmove', function(e) { if (e.touches.length > 1) e.preventDefault(); }, { passive: false });
-        `}} />
-      </head>
       <body className="bg-white">
         <Nav />
         <main>{children}</main>
