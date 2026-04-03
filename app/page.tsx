@@ -18,44 +18,44 @@ const RED        = "#c1440e";
 
 /* ── Data ── */
 const liveSystems = [
-  { name: "Smart Onboarding Engine",      tag: "onboarding",   metric: "Active", metricLabel: "running" },
-  { name: "AI Lead Engine",               tag: "acquisition",  metric: "Active", metricLabel: "running" },
-  { name: "Retention Reactor AI",         tag: "retention",    metric: "Active", metricLabel: "running" },
-  { name: "ROI Intelligence Hub",         tag: "visibility",   metric: "Active", metricLabel: "running" },
-  { name: "Creative Intelligence Engine", tag: "creative",     metric: "Active", metricLabel: "running" },
-  { name: "Campaign Monitoring Agents",   tag: "performance",  metric: "24/7",   metricLabel: "monitoring" },
+  { name: "Lead Generation & Outreach",  tag: "outreach",     metric: "Active", metricLabel: "running" },
+  { name: "Client Onboarding",           tag: "onboarding",   metric: "Active", metricLabel: "running" },
+  { name: "Retention & Account Health",  tag: "retention",    metric: "Active", metricLabel: "running" },
+  { name: "Research & Intelligence",     tag: "research",     metric: "Active", metricLabel: "running" },
+  { name: "Reporting & ROI",             tag: "reporting",    metric: "Active", metricLabel: "running" },
+  { name: "Operations & Delivery",       tag: "operations",   metric: "24/7",   metricLabel: "running" },
 ];
 
 const systemCards = [
   {
-    name: "Smart Onboarding Engine",
-    desc: "Runs every step of new client activation automatically — access collection, audit, strategy approval, campaign build. Each step triggers the next.",
+    name: "Lead Generation & Outreach",
+    desc: "Finds your ideal clients, researches the right contacts, and sends personalised outreach automatically. Qualified replies land in your inbox. Your pipeline grows while your team focuses on delivery.",
+    metric: "↗ Pipeline that runs without you",
+  },
+  {
+    name: "Client Onboarding",
+    desc: "Runs every step of new client activation automatically — information collection, briefing, approvals, and setup. No chasing. No bottlenecks. Each step triggers the next.",
     metric: "↗ Days to activate, not weeks",
   },
   {
-    name: "AI Lead Engine",
-    desc: "Discovers target companies, researches decision-makers, generates personalised outreach, and routes qualified replies to your team. Continuously.",
-    metric: "↗ 3–5× qualified pipeline",
-  },
-  {
-    name: "Retention Reactor AI",
-    desc: "Monitors every client account for disengagement signals and triggers the right intervention automatically — before churn becomes a cancellation call.",
+    name: "Retention & Account Health",
+    desc: "Monitors every client relationship for early warning signs and triggers the right intervention automatically — before disengagement becomes a lost contract.",
     metric: "↗ Churn caught before it happens",
   },
   {
-    name: "ROI Intelligence Hub",
-    desc: "Aggregates output from every connected system into attributed metrics and generates a branded monthly report. Automatically, every month.",
+    name: "Research & Intelligence",
+    desc: "Builds agents that research prospects, markets, or opportunities on demand — and deliver findings your team can act on immediately. Hours of manual research, done automatically.",
+    metric: "↗ Hours of research, done in minutes",
+  },
+  {
+    name: "Reporting & ROI",
+    desc: "Aggregates output from every connected system and generates branded reports automatically — for your team or your clients. Every month, without anyone touching a spreadsheet.",
     metric: "↗ Clients see value — and stay",
   },
   {
-    name: "Creative Intelligence Engine",
-    desc: "Ingests ad performance data, identifies winning patterns, generates new variants, and routes top performers for approval. Weekly creative iteration.",
-    metric: "↗ Lower CPAs, higher ROAS",
-  },
-  {
-    name: "Campaign Monitoring Agents",
-    desc: "Monitors campaigns 24/7 across every connected platform — flagging spend anomalies and performance drops the moment they appear.",
-    metric: "↗ You find out before your client does",
+    name: "Operations & Delivery",
+    desc: "Identifies the manual work slowing your team down and builds infrastructure to run it automatically. The repetitive tasks that eat your week get handled. Your people focus on what actually matters.",
+    metric: "↗ Less admin, more delivery",
   },
 ];
 
@@ -198,11 +198,11 @@ export default function HomePage() {
         <AnimateIn>
           <SectionLabel text="The infrastructure" />
           <h2 style={{ ...display, fontSize: "clamp(1.8rem, 3vw, 2.6rem)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.15, color: INK, maxWidth: 600, marginBottom: "1rem" }}>
-            The work your agency keeps doing manually.
+            The work your team keeps doing manually.
           </h2>
           <p style={{ ...sans, fontSize: 16, fontWeight: 300, color: INK_MID, maxWidth: 540, lineHeight: 1.65, marginBottom: "3.5rem" }}>
-            We identify your highest-impact gaps and build the infrastructure to close them. These are
-            the systems we build most often — each one solving a real problem agencies face every week.
+            The highest-impact gaps get identified on the first call. These are the six areas where
+            infrastructure gets built — each one solving a problem that costs time or clients every week.
           </p>
         </AnimateIn>
 
@@ -352,8 +352,8 @@ export default function HomePage() {
               I designed these to run the way agencies actually operate.
             </p>
             <p style={{ ...sans, fontSize: 15, fontWeight: 300, color: INK_MID, lineHeight: 1.75, marginBottom: "2rem" }}>
-              I work with a small number of agencies at a time. If we&apos;re a fit, we&apos;ll know it in the
-              first call.
+              I work with a small number of clients at a time. If it&apos;s a good fit, you&apos;ll know it in
+              the first call.
             </p>
 
             <div className="flex items-center gap-3.5">
