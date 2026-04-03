@@ -72,7 +72,7 @@ const steps = [
   {
     n: "1",
     title: "I scope your setup",
-    body: "One call to understand your agency, your clients, and where the biggest gaps are. No 40-page questionnaires. I figure this out with you.",
+    body: "One call to understand your business, your clients, and where the biggest gaps are. No 40-page questionnaires. I figure this out with you.",
   },
   {
     n: "2",
@@ -156,8 +156,8 @@ export default function HomePage() {
             className="animate-hero-3 mb-10"
             style={{ ...sans, fontSize: 17, fontWeight: 300, lineHeight: 1.65, color: INK_MID, maxWidth: 500 }}
           >
-            AutoAITech builds and runs AI infrastructure for Irish and UK agencies — onboarding,
-            lead generation, retention, reporting, creative, and campaign monitoring — running 24/7
+            AutoAITech builds and runs AI infrastructure for Irish and UK businesses — onboarding,
+            lead generation, retention, reporting, research, and operations — running 24/7
             so your team can focus on the work that actually matters.
           </p>
 
@@ -349,7 +349,7 @@ export default function HomePage() {
             <p style={{ ...sans, fontSize: 15, fontWeight: 300, color: INK_MID, lineHeight: 1.75, marginBottom: "1.25rem" }}>
               I&apos;m Sean, based in Ireland. I built this infrastructure because the problem is the same
               at every agency I&apos;ve spoken to — too much manual work, not enough systems underneath it.
-              I designed these to run the way agencies actually operate.
+              I designed these to run the way service businesses actually operate.
             </p>
             <p style={{ ...sans, fontSize: 15, fontWeight: 300, color: INK_MID, lineHeight: 1.75, marginBottom: "2rem" }}>
               I work with a small number of clients at a time. If it&apos;s a good fit, you&apos;ll know it in
@@ -388,11 +388,11 @@ export default function HomePage() {
           <h2
             style={{ ...display, fontSize: "clamp(2rem, 4vw, 3.2rem)", fontWeight: 700, letterSpacing: "-0.025em", lineHeight: 1.1, color: "white", marginBottom: "1rem" }}
           >
-            Built for your agency.<br />
+            Built for your business.<br />
             <em style={{ color: "#6ee7b7", fontStyle: "italic", fontWeight: 600 }}>One call to start.</em>
           </h2>
           <p style={{ ...sans, fontSize: 16, fontWeight: 300, color: "#6b6a67", maxWidth: 480, margin: "0 auto 2.5rem", lineHeight: 1.65 }}>
-            One 30-minute call and I&apos;ll tell you exactly what your agency is missing and what that
+            One 30-minute call and I&apos;ll tell you exactly what your business is missing and what that
             infrastructure looks like in practice.
           </p>
           <div className="flex items-center justify-center gap-3">
