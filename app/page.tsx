@@ -111,18 +111,16 @@ export default function HomePage() {
     <>
       {/* ── HERO ── */}
       <section
-        className="mt-[56px] border-b"
+        className="mt-[56px] border-b grid grid-cols-1 md:grid-cols-[1fr_460px]"
         style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 460px",
           minHeight: "calc(100vh - 56px)",
           borderColor: BORDER,
         }}
       >
         {/* Left */}
         <div
-          className="flex flex-col justify-center border-r animate-hero-1"
-          style={{ padding: "5rem 4rem 4rem", borderColor: BORDER }}
+          className="flex flex-col justify-center md:border-r animate-hero-1 px-8 py-16 md:px-16 md:pt-20 md:pb-16"
+          style={{ borderColor: BORDER }}
         >
           {/* Badge */}
           <div
@@ -176,7 +174,7 @@ export default function HomePage() {
         </div>
 
         {/* Right — always-on clock panel */}
-        <div className="animate-hero-r" style={{ display: "flex", flexDirection: "column" }}>
+        <div className="animate-hero-r hidden md:flex flex-col">
           <HeroPanel />
         </div>
       </section>
@@ -196,7 +194,7 @@ export default function HomePage() {
       </div>
 
       {/* ── SYSTEMS ── */}
-      <section id="systems" style={{ padding: "6rem 4rem" }}>
+      <section id="systems" className="px-6 py-20 md:px-16 md:py-24">
         <AnimateIn>
           <SectionLabel text="The infrastructure" />
           <h2 style={{ ...display, fontSize: "clamp(1.8rem, 3vw, 2.6rem)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.15, color: INK, maxWidth: 600, marginBottom: "1rem" }}>
@@ -210,9 +208,8 @@ export default function HomePage() {
 
         {/* 3-col grid */}
         <div
+          className="grid grid-cols-1 md:grid-cols-3"
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
             gap: 1,
             background: BORDER,
             border: `1px solid ${BORDER}`,
@@ -239,7 +236,7 @@ export default function HomePage() {
       </section>
 
       {/* ── HOW IT WORKS ── */}
-      <section id="how-it-works" style={{ background: "#fafaf9", borderTop: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}`, padding: "6rem 4rem" }}>
+      <section id="how-it-works" className="px-6 py-20 md:px-16 md:py-24" style={{ background: "#fafaf9", borderTop: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}` }}>
         <AnimateIn>
           <SectionLabel text="How it works" />
           <h2 style={{ ...display, fontSize: "clamp(1.8rem, 3vw, 2.6rem)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.15, color: INK, maxWidth: 600, marginBottom: "3rem" }}>
@@ -247,7 +244,7 @@ export default function HomePage() {
           </h2>
         </AnimateIn>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "3rem" }}>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
           {steps.map((s, i) => (
             <AnimateIn key={s.n} delay={i * 80} direction="up">
               <div>
@@ -276,7 +273,7 @@ export default function HomePage() {
       </section>
 
       {/* ── COMPARISON ── */}
-      <section style={{ padding: "6rem 4rem", background: "white", borderBottom: `1px solid ${BORDER}` }}>
+      <section className="px-6 py-20 md:px-16 md:py-24" style={{ background: "white", borderBottom: `1px solid ${BORDER}` }}>
         <AnimateIn>
           <SectionLabel text="Why AutoAITech" />
           <h2 style={{ ...display, fontSize: "clamp(1.8rem, 3vw, 2.6rem)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.15, color: INK, maxWidth: 600, marginBottom: "1rem" }}>
@@ -289,7 +286,8 @@ export default function HomePage() {
 
         <AnimateIn direction="up" delay={100}>
           <div style={{ border: `1px solid ${BORDER}`, borderRadius: 12, overflow: "hidden" }}>
-            <table style={{ width: "100%", borderCollapse: "collapse" }}>
+            <div className="overflow-x-auto">
+            <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 520 }}>
               <thead>
                 <tr>
                   <th style={{ width: "40%", padding: "1rem 1.5rem", textAlign: "left", ...mono, fontSize: 10, textTransform: "uppercase", letterSpacing: "0.08em", color: INK_FAINT, background: "#fafaf9", borderBottom: `1px solid ${BORDER}` }}>
@@ -325,16 +323,15 @@ export default function HomePage() {
                 ))}
               </tbody>
             </table>
+            </div>
           </div>
         </AnimateIn>
       </section>
 
       {/* ── FOUNDER ── */}
       <section
-        style={{
-          padding: "6rem 4rem",
-          borderBottom: `1px solid ${BORDER}`,
-        }}
+        className="px-6 py-20 md:px-16 md:py-24"
+        style={{ borderBottom: `1px solid ${BORDER}` }}
       >
         <AnimateIn direction="left">
           <div style={{ maxWidth: 640 }}>
@@ -383,7 +380,7 @@ export default function HomePage() {
       </section>
 
       {/* ── CTA ── */}
-      <section style={{ background: INK, padding: "6rem 4rem", textAlign: "center" }}>
+      <section className="px-6 py-20 md:px-16 md:py-24 text-center" style={{ background: INK }}>
         <AnimateIn>
           <div style={{ ...mono, fontSize: 10, color: "#6ee7b7", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "1.25rem" }}>
             Ready to start
