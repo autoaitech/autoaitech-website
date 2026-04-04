@@ -41,23 +41,28 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "AutoAITech — AI Infrastructure for Agencies",
+  title: "AutoAITech — AI Agentic Infrastructure",
   description:
-    "AutoAITech builds and runs AI infrastructure for Irish and UK agencies — lead follow-up, proposals, reporting, and more — running 24/7.",
-  keywords: ["AI automation", "agency AI", "AI infrastructure", "B2B AI", "marketing automation Ireland"],
+    "AutoAITech builds and runs AI agentic infrastructure for service businesses — follow-up, reporting, outreach, and operations running 24/7.",
+  keywords: ["AI infrastructure", "agentic AI", "B2B AI", "AI automation", "AI for service businesses", "Ireland AI"],
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+  },
   openGraph: {
-    title: "AutoAITech — AI Infrastructure for Agencies",
+    title: "AutoAITech — AI Agentic Infrastructure",
     description:
-      "AutoAITech builds and runs AI infrastructure for Irish and UK agencies — running 24/7.",
+      "AutoAITech builds and runs AI agentic infrastructure for service businesses — running 24/7.",
     url: "https://autoaitech.co",
     siteName: "AutoAITech",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "AutoAITech — AI Infrastructure for Agencies",
+    title: "AutoAITech — AI Agentic Infrastructure",
     description:
-      "AutoAITech builds and runs AI infrastructure for Irish and UK agencies — running 24/7.",
+      "AutoAITech builds and runs AI agentic infrastructure for service businesses — running 24/7.",
   },
 };
 
