@@ -41,9 +41,9 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "AutoAITech — AI Agentic Infrastructure",
+  title: "AutoAITech — AI Infrastructure",
   description:
-    "AutoAITech builds and runs AI agentic infrastructure for service businesses — follow-up, reporting, outreach, and operations running 24/7.",
+    "AutoAITech builds and runs AI infrastructure for service businesses.",
   keywords: ["AI infrastructure", "agentic AI", "B2B AI", "AI automation", "AI for service businesses", "Ireland AI"],
   verification: {
     google: "lHpXRFUVBXy1iTQdF-Pu2dKwYpgyeFLUo6-upObTFwY",
