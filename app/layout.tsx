@@ -45,6 +45,9 @@ export const metadata: Metadata = {
   description:
     "AutoAITech builds and runs AI agentic infrastructure for service businesses — follow-up, reporting, outreach, and operations running 24/7.",
   keywords: ["AI infrastructure", "agentic AI", "B2B AI", "AI automation", "AI for service businesses", "Ireland AI"],
+  verification: {
+    google: "lHpXRFUVBXy1iTQdF-Pu2dKwYpgyeFLUo6-upObTFwY",
+  },
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },
