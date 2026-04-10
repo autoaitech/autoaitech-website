@@ -4,7 +4,7 @@ import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
-import { Analytics } from "@vercel/analytics/react";
+import AnalyticsGate from "@/components/AnalyticsGate";
 
 const bricolage = Bricolage_Grotesque({
   weight: ["300", "400", "500", "600", "700", "800"],
@@ -76,7 +76,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Nav />
         <main>{children}</main>
         <Footer />
-        <Analytics />
+        <AnalyticsGate />
         <CookieBanner />
       </body>
     </html>

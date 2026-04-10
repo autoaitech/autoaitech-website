@@ -43,6 +43,17 @@ export default function Footer() {
             onMouseLeave={(e) => (e.currentTarget.style.color = "#2e2e2b")}
           >Privacy Policy</a>
           {sep}
+          <button
+            type="button"
+            onClick={() => {
+              localStorage.removeItem("aat_cookie_consent");
+              window.dispatchEvent(new Event("aat-consent-change"));
+            }}
+            style={{ ...linkStyle, background: "transparent", border: "none", padding: 0, cursor: "pointer" }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#6b6a67")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "#2e2e2b")}
+          >Manage Cookies</button>
+          {sep}
           <a href="/terms" style={linkStyle}
             onMouseEnter={(e) => (e.currentTarget.style.color = "#6b6a67")}
             onMouseLeave={(e) => (e.currentTarget.style.color = "#2e2e2b")}

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 
 const COOKIE_KEY = "aat_cookie_consent";
+const CONSENT_EVENT = "aat-consent-change";
 
 const mono: React.CSSProperties = { fontFamily: "var(--font-mono)" };
 
@@ -10,19 +11,21 @@ export default function CookieBanner() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const consent = localStorage.getItem(COOKIE_KEY);
-    if (!consent) setVisible(true);
+    const sync = () => {
+      setVisible(!localStorage.getItem(COOKIE_KEY));
+    };
+    sync();
+    window.addEventListener(CONSENT_EVENT, sync);
+    return () => window.removeEventListener(CONSENT_EVENT, sync);
   }, []);
 
-  function accept() {
-    localStorage.setItem(COOKIE_KEY, "accepted");
-    setVisible(false);
+  function setConsent(value: "accepted" | "declined") {
+    localStorage.setItem(COOKIE_KEY, value);
+    window.dispatchEvent(new Event(CONSENT_EVENT));
   }
 
-  function decline() {
-    localStorage.setItem(COOKIE_KEY, "declined");
-    setVisible(false);
-  }
+  const accept = () => setConsent("accepted");
+  const decline = () => setConsent("declined");
 
   if (!visible) return null;
 
