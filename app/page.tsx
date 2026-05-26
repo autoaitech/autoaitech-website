@@ -1,6 +1,7 @@
 import Link from "next/link";
 import AnimateIn from "@/components/AnimateIn";
 import HeroPanel from "@/components/HeroPanel";
+import FAQSection from "@/components/FAQSection";
 
 /* ── Design tokens ── */
 const display: React.CSSProperties = { fontFamily: "var(--font-display)" };
@@ -137,7 +138,7 @@ export default function HomePage() {
               style={{ width: 7, height: 7, borderRadius: "50%", background: GREEN, flexShrink: 0, display: "block" }}
             />
             <span style={{ ...mono, fontSize: 10.5, fontWeight: 500, color: GREEN, letterSpacing: "0.06em", textTransform: "uppercase" }}>
-              AI infrastructure — accepting agencies
+              AI infrastructure · Accepting agencies
             </span>
           </div>
 
@@ -328,53 +329,62 @@ export default function HomePage() {
         </AnimateIn>
       </section>
 
+      <FAQSection />
+
       {/* ── FOUNDER ── */}
       <section
         className="px-6 py-20 md:px-16 md:py-24"
-        style={{ borderBottom: `1px solid ${BORDER}` }}
+        style={{ borderBottom: `1px solid ${BORDER}`, background: "#fafaf9" }}
       >
         <AnimateIn direction="left">
-          <div style={{ maxWidth: 640 }}>
-            <SectionLabel text="From the founder" />
+          <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-12 md:gap-16 items-start">
 
-            <blockquote
-              style={{ ...display, fontSize: "clamp(1.4rem, 2.5vw, 2rem)", fontWeight: 600, lineHeight: 1.35, letterSpacing: "-0.02em", color: INK, marginBottom: "1.5rem" }}
-            >
-              &ldquo;I built this because I kept watching agencies do the same manual work, every week,
-              forever. That&apos;s not a resourcing problem —{" "}
-              <em style={{ color: RED, fontStyle: "italic", fontWeight: 500 }}>it&apos;s an infrastructure problem.</em>
-              &rdquo;
-            </blockquote>
-
-            <p style={{ ...sans, fontSize: 15, fontWeight: 300, color: INK_MID, lineHeight: 1.75, marginBottom: "1.25rem" }}>
-              I&apos;m Sean, based in Ireland. I built this infrastructure because the problem is the same
-              at every agency I&apos;ve spoken to — too much manual work, not enough systems underneath it.
-              I designed these to run the way service businesses actually operate.
-            </p>
-            <p style={{ ...sans, fontSize: 15, fontWeight: 300, color: INK_MID, lineHeight: 1.75, marginBottom: "2rem" }}>
-              I work with a small number of clients at a time. If it&apos;s a good fit, you&apos;ll know it in
-              the first call.
-            </p>
-
-            <div className="flex items-center gap-3.5">
-              <div
-                style={{
-                  width: 44, height: 44, borderRadius: "50%",
-                  background: `linear-gradient(135deg, ${GREEN_LIGHT}, ${GREEN_BORDER})`,
-                  border: `2px solid ${BORDER}`,
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  ...display, fontSize: 16, fontWeight: 700, color: GREEN,
-                }}
+            {/* Left: label + blockquote */}
+            <div>
+              <SectionLabel text="From the founder" />
+              <blockquote
+                style={{ ...display, fontSize: "clamp(1.4rem, 2.5vw, 2rem)", fontWeight: 600, lineHeight: 1.35, letterSpacing: "-0.02em", color: INK }}
               >
-                S
-              </div>
-              <div>
-                <div style={{ ...display, fontSize: 14, fontWeight: 700, color: INK }}>Sean Mulligan</div>
-                <div style={{ ...mono, fontSize: 10, color: INK_FAINT, textTransform: "uppercase", letterSpacing: "0.06em", marginTop: 2 }}>
-                  Founder — AutoAITech · Dublin, Ireland
+                &ldquo;I built this because I kept watching agencies do the same manual work, every week,
+                forever. That&apos;s not a resourcing problem.{" "}
+                <em style={{ color: RED, fontStyle: "italic", fontWeight: 500 }}>It&apos;s an infrastructure problem.</em>
+                &rdquo;
+              </blockquote>
+            </div>
+
+            {/* Right: body + attribution */}
+            <div>
+              <p style={{ ...sans, fontSize: 15, fontWeight: 300, color: INK_MID, lineHeight: 1.75, marginBottom: "1.25rem" }}>
+                I&apos;m Sean, based in Ireland. I built this infrastructure because the problem is the same
+                at every agency I&apos;ve spoken to: too much manual work, not enough systems underneath it.
+                I designed these to run the way service businesses actually operate.
+              </p>
+              <p style={{ ...sans, fontSize: 15, fontWeight: 300, color: INK_MID, lineHeight: 1.75, marginBottom: "2rem" }}>
+                I work with a small number of clients at a time. If it&apos;s a good fit, you&apos;ll know it in
+                the first call.
+              </p>
+
+              <div className="flex items-center gap-3.5">
+                <div
+                  style={{
+                    width: 44, height: 44, borderRadius: "50%",
+                    background: `linear-gradient(135deg, ${GREEN_LIGHT}, ${GREEN_BORDER})`,
+                    border: `2px solid ${BORDER}`,
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    ...display, fontSize: 16, fontWeight: 700, color: GREEN,
+                  }}
+                >
+                  S
+                </div>
+                <div>
+                  <div style={{ ...display, fontSize: 14, fontWeight: 700, color: INK }}>Sean Mulligan</div>
+                  <div style={{ ...mono, fontSize: 10, color: INK_FAINT, textTransform: "uppercase", letterSpacing: "0.06em", marginTop: 2 }}>
+                    Founder, AutoAITech · Dublin, Ireland
+                  </div>
                 </div>
               </div>
             </div>
+
           </div>
         </AnimateIn>
       </section>
