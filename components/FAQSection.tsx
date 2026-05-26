@@ -31,7 +31,7 @@ const faqs = [
   {
     q: "How long before I see results?",
     a: [
-      "The first systems are live within two to three weeks of starting. Once they're connected and running, you'll see them working straight away. There's no long runway before infrastructure is active — the systems go live and start running immediately.",
+      "The first systems are live within two to three weeks of starting. Once they're connected and running, you'll see them working straight away. There's no long runway before infrastructure is active. The systems go live and start running immediately.",
     ],
   },
   {

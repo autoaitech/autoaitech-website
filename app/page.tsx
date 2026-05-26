@@ -35,23 +35,23 @@ const systemCards = [
   },
   {
     name: "Client Onboarding",
-    desc: "Runs every step of new client activation automatically — information collection, briefing, approvals, and setup. No chasing. No bottlenecks. Each step triggers the next.",
+    desc: "Runs every step of new client activation automatically: information collection, briefing, approvals, and setup. No chasing. No bottlenecks. Each step triggers the next.",
     metric: "↗ Days to activate, not weeks",
   },
   {
     name: "Retention & Account Health",
-    desc: "Monitors every client relationship for early warning signs and triggers the right intervention automatically — before disengagement becomes a lost contract.",
+    desc: "Monitors every client relationship for early warning signs and triggers the right intervention automatically, before disengagement becomes a lost contract.",
     metric: "↗ Churn caught before it happens",
   },
   {
     name: "Research & Intelligence",
-    desc: "Builds agents that research prospects, markets, or opportunities on demand — and deliver findings your team can act on immediately. Hours of manual research, done automatically.",
+    desc: "Builds agents that research prospects, markets, or opportunities on demand and deliver findings your team can act on immediately. Hours of manual research, done automatically.",
     metric: "↗ Hours of research, done in minutes",
   },
   {
     name: "Reporting & ROI",
-    desc: "Aggregates output from every connected system and generates branded reports automatically — for your team or your clients. Every month, without anyone touching a spreadsheet.",
-    metric: "↗ Clients see value — and stay",
+    desc: "Aggregates output from every connected system and generates branded reports automatically, for your team or your clients. Every month, without anyone touching a spreadsheet.",
+    metric: "↗ Clients see value and stay",
   },
   {
     name: "Operations & Delivery",
@@ -103,7 +103,7 @@ function Check() {
   return <span style={{ color: GREEN, fontSize: 16 }}>✓</span>;
 }
 function Cross() {
-  return <span style={{ color: "#c8c5c0", fontSize: 16 }}>—</span>;
+  return <span style={{ color: "#c8c5c0", fontSize: 13 }}>✕</span>;
 }
 
 /* ── Page ── */
@@ -158,7 +158,7 @@ export default function HomePage() {
             style={{ ...sans, fontSize: 17, fontWeight: 300, lineHeight: 1.65, color: INK_MID, maxWidth: 500 }}
           >
             AutoAITech builds and runs AI infrastructure for Irish and UK businesses. Lead generation,
-            onboarding, retention, reporting, research, and operations — all running 24/7, so your
+            onboarding, retention, reporting, research, and operations, all running 24/7, so your
             team can focus on the work that actually matters.
           </p>
 
@@ -203,7 +203,7 @@ export default function HomePage() {
           </h2>
           <p style={{ ...sans, fontSize: 16, fontWeight: 300, color: INK_MID, maxWidth: 540, lineHeight: 1.65, marginBottom: "3.5rem" }}>
             The highest-impact gaps get identified on the first call. These are the six areas where
-            infrastructure gets built — each one solving a problem that costs time or clients every week.
+            infrastructure gets built, each one solving a problem that costs time or clients every week.
           </p>
         </AnimateIn>
 
@@ -329,8 +329,6 @@ export default function HomePage() {
         </AnimateIn>
       </section>
 
-      <FAQSection />
-
       {/* ── FOUNDER ── */}
       <section
         className="px-6 py-20 md:px-16 md:py-24"
@@ -343,7 +341,17 @@ export default function HomePage() {
             <div>
               <SectionLabel text="From the founder" />
               <blockquote
-                style={{ ...display, fontSize: "clamp(1.4rem, 2.5vw, 2rem)", fontWeight: 600, lineHeight: 1.35, letterSpacing: "-0.02em", color: INK }}
+                style={{
+                  ...display,
+                  fontSize: "clamp(1.05rem, 1.4vw, 1.2rem)",
+                  fontWeight: 500,
+                  lineHeight: 1.65,
+                  letterSpacing: "-0.01em",
+                  color: INK,
+                  borderLeft: `3px solid ${GREEN}`,
+                  paddingLeft: "1.25rem",
+                  marginTop: "0.5rem",
+                }}
               >
                 &ldquo;I built this because I kept watching agencies do the same manual work, every week,
                 forever. That&apos;s not a resourcing problem.{" "}
@@ -388,6 +396,8 @@ export default function HomePage() {
           </div>
         </AnimateIn>
       </section>
+
+      <FAQSection />
 
       {/* ── CTA ── */}
       <section className="px-6 py-20 md:px-16 md:py-24 text-center" style={{ background: INK }}>
