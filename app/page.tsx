@@ -367,30 +367,10 @@ export default function HomePage() {
                 at every agency I&apos;ve spoken to: too much manual work, not enough systems underneath it.
                 I designed these to run the way service businesses actually operate.
               </p>
-              <p style={{ ...sans, fontSize: 15, fontWeight: 300, color: INK_MID, lineHeight: 1.75, marginBottom: "2rem" }}>
+              <p style={{ ...sans, fontSize: 15, fontWeight: 300, color: INK_MID, lineHeight: 1.75 }}>
                 I work with a small number of clients at a time. If it&apos;s a good fit, you&apos;ll know it in
                 the first call.
               </p>
-
-              <div className="flex items-center gap-3.5">
-                <div
-                  style={{
-                    width: 44, height: 44, borderRadius: "50%",
-                    background: `linear-gradient(135deg, ${GREEN_LIGHT}, ${GREEN_BORDER})`,
-                    border: `2px solid ${BORDER}`,
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    ...display, fontSize: 16, fontWeight: 700, color: GREEN,
-                  }}
-                >
-                  S
-                </div>
-                <div>
-                  <div style={{ ...display, fontSize: 14, fontWeight: 700, color: INK }}>Sean Mulligan</div>
-                  <div style={{ ...mono, fontSize: 10, color: INK_FAINT, textTransform: "uppercase", letterSpacing: "0.06em", marginTop: 2 }}>
-                    Founder, AutoAITech · Dublin, Ireland
-                  </div>
-                </div>
-              </div>
             </div>
 
           </div>
