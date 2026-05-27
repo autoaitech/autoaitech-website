@@ -1,7 +1,6 @@
 import Link from "next/link";
 import AnimateIn from "@/components/AnimateIn";
 import HeroPanel from "@/components/HeroPanel";
-import FAQSection from "@/components/FAQSection";
 
 /* ── Design tokens ── */
 const display: React.CSSProperties = { fontFamily: "var(--font-display)" };
@@ -376,8 +375,6 @@ export default function HomePage() {
           </div>
         </AnimateIn>
       </section>
-
-      <FAQSection />
 
       {/* ── CTA ── */}
       <section className="px-6 py-20 md:px-16 md:py-24 text-center" style={{ background: INK }}>
