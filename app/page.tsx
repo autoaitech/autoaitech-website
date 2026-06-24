@@ -122,25 +122,6 @@ export default function HomePage() {
           className="flex flex-col justify-center md:border-r animate-hero-1 px-8 py-16 md:px-16 md:pt-20 md:pb-16"
           style={{ borderColor: BORDER }}
         >
-          {/* Badge */}
-          <div
-            className="inline-flex items-center gap-2 mb-10 w-fit"
-            style={{
-              background: GREEN_LIGHT,
-              border: `1px solid ${GREEN_BORDER}`,
-              borderRadius: 100,
-              padding: "5px 12px 5px 8px",
-            }}
-          >
-            <span
-              className="pulse-green"
-              style={{ width: 7, height: 7, borderRadius: "50%", background: GREEN, flexShrink: 0, display: "block" }}
-            />
-            <span style={{ ...mono, fontSize: 10.5, fontWeight: 500, color: GREEN, letterSpacing: "0.06em", textTransform: "uppercase" }}>
-              AI infrastructure · Accepting agencies
-            </span>
-          </div>
-
           {/* Headline */}
           <h1
             className="animate-hero-2 mb-7"
