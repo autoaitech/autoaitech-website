@@ -347,10 +347,6 @@ export default function HomePage() {
                 at every agency I&apos;ve spoken to: too much manual work, not enough systems underneath it.
                 I designed these to run the way service businesses actually operate.
               </p>
-              <p style={{ ...sans, fontSize: 15, fontWeight: 300, color: INK_MID, lineHeight: 1.75 }}>
-                I work with a small number of clients at a time. If it&apos;s a good fit, you&apos;ll know it in
-                the first call.
-              </p>
             </div>
 
           </div>
